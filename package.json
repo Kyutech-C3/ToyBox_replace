@@ -67,7 +67,7 @@
     "@types/node": "20.8.7",
     "@types/react": "18.2.30",
     "@types/react-dom": "18.2.13",
-    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.3.0",
     "aspida": "^1.14.0",
     "autoprefixer": "^10.4.16",
