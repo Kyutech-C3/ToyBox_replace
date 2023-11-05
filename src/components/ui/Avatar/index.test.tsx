@@ -14,7 +14,7 @@ describe('test ui/Avatar', () => {
 
   it('renders Avatar with AvatarImage, AvatarFallback correctly', () => {
     const fallbackText = 'FB';
-    const imageUrl = 'https://github.com/shadcn.png'
+    const imageUrl = 'https://github.com/shadcn.png';
     render(
       <Avatar>
         <AvatarImage src={imageUrl} />
