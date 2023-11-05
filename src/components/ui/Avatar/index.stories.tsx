@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Avatar, AvatarFallback, AvatarImage } from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
