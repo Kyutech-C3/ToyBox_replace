@@ -2,7 +2,9 @@ import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 import { Slot } from '@radix-ui/react-slot';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
+
+import type { VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/libs/utils';
 
@@ -70,9 +72,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps & Props>(
         {...props}
       >
         <>
-          {startIcon && <span className={cn('mr-2')}>{startIcon}</span>}
+          {startIcon && <span className="mr-2">{startIcon}</span>}
           {children}
-          {endIcon && <span className={cn('ml-2')}>{endIcon}</span>}
+          {endIcon && <span className="ml-2">{endIcon}</span>}
         </>
       </Comp>
     );
