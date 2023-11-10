@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Popover, PopoverTrigger, PopoverContent } from '.';
 
-describe('ui/Popoverのテスト', () => {
+describe('test ui/Popover', () => {
   it('renders trigger text correctly', () => {
     const triggerText = 'Trigger';
     const screen = render(
