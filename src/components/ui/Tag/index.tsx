@@ -1,8 +1,9 @@
 import type { FC, HTMLAttributes, ReactNode } from 'react';
 
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import Link from 'next/link';
 
+import type { VariantProps } from 'class-variance-authority';
 import type { LinkProps as NextLinkProps } from 'next/link';
 
 import { cn } from '@/libs/utils';

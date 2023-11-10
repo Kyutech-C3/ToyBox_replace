@@ -12,7 +12,13 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["react", "import", "unused-imports", "jsx-a11y"],
+  "plugins": [
+    "react",
+    "import",
+    "unused-imports",
+    "jsx-a11y",
+    "@typescript-eslint"
+  ],
   "rules": {
     // 関数の戻り値の型を明示的に指定する
     "@typescript-eslint/explicit-function-return-type": "error",
@@ -77,17 +83,28 @@
           // modelコンポーネントにおいて、pageのimportを禁止する
           {
             "target": "./src/components/model",
-            "from": ["./src/components/page"]
+            "from": [
+              "./src/components/page",
+              "./node_modules/@radix-ui/",
+              "./node_modules/react-error-boundary"
+            ]
           },
           // pageコンポーネントにおいて、他のpageコンポーネントからのimportを禁止する
           {
             "target": "./src/components/page/**/index.tsx",
-            "from": ["./src/components/page/**/index.tsx"]
+            "from": [
+              "./src/components/page/**/index.tsx",
+              "./node_modules/@radix-ui/"
+            ]
           },
           // appディレクトリ配下においてmodel,uiのimportを禁止する
           {
             "target": "./src/app/**/page.tsx",
-            "from": ["./src/components/model", "./src/components/ui"]
+            "from": [
+              "./src/components/model",
+              "./src/components/ui",
+              "./node_modules/@radix-ui/"
+            ]
           }
         ]
       }
@@ -178,8 +195,13 @@
     "@typescript-eslint/consistent-type-imports": [
       "error",
       {
-        "prefer": "type-imports"
+        "prefer": "type-imports",
+        "disallowTypeAnnotations": false,
+        "fixStyle": "inline-type-imports"
       }
-    ]
+    ],
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+
+    "@typescript-eslint/no-import-type-side-effects": ["error"]
   }
 }
