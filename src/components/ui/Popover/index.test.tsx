@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import '@testing-library/jest-dom';
 import { Popover, PopoverTrigger, PopoverContent } from '.';
@@ -31,15 +32,25 @@ describe('test ui/Popover', () => {
     );
   });
 
-  it('not renders content by default', () => {
+  it('check trigger works correctly', async () => {
+    const trigger = 'Trigger';
     const content = 'Content';
     const screen = render(
       <Popover>
-        <PopoverTrigger>Trigger</PopoverTrigger>
+        <PopoverTrigger>{trigger}</PopoverTrigger>
         <PopoverContent>{content}</PopoverContent>
       </Popover>
     );
 
+    // closed by default
+    expect(() => screen.getByText(content)).toThrow();
+
+    // open on trigger clicked
+    await userEvent.click(screen.getByText(trigger));
+    expect(screen.getByText(content)).toBeInTheDocument();
+
+    // close on trigger clicked
+    await userEvent.click(screen.getByText(trigger));
     expect(() => screen.getByText(content)).toThrow();
   });
 });
