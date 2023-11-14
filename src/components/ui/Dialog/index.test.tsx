@@ -51,7 +51,7 @@ describe('ui/Dialog', () => {
     const screen = render(
       <Dialog modal>
         <DialogTrigger>{trigger}</DialogTrigger>
-        <DialogContent className="bg-primary text-primary-foreground">
+        <DialogContent>
           <DialogHeader>
             <DialogTitle>Dialog Title</DialogTitle>
             <DialogDescription>{content}</DialogDescription>
