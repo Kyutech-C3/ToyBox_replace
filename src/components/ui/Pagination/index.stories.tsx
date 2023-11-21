@@ -1,10 +1,9 @@
-import { PaginationPresentation } from './presentations';
-import { PaginationErrorPresentation } from './presentations/error';
+import { Pagination } from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof PaginationPresentation> = {
-  component: PaginationPresentation,
+const meta: Meta<typeof Pagination> = {
+  component: Pagination,
   parameters: {
     layout: 'centered',
   },
@@ -13,7 +12,7 @@ const meta: Meta<typeof PaginationPresentation> = {
 
 export default meta;
 
-type Story = StoryObj<typeof PaginationPresentation>;
+type Story = StoryObj<typeof Pagination>;
 
 export const Default: Story = {
   args: {
@@ -21,10 +20,6 @@ export const Default: Story = {
     currentPage: 5,
     displayRange: 1,
   },
-};
-
-export const Error: Story = {
-  render: () => <PaginationErrorPresentation />,
 };
 
 export const DisplayRangeZero: Story = {

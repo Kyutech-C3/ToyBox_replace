@@ -8,11 +8,15 @@ import {
   isPageOneRequired,
   isRightDotsRequired,
   isTotalPageRequired,
-} from '../logic/CheckElementRequired';
-
-import type { Props } from '..';
+} from './logic/CheckElementRequired';
 
 import { Button } from '@/components/ui/Button';
+type Props = {
+  handleClick: (page: number) => void;
+  totalPage: number;
+  currentPage: number;
+  displayRange?: number;
+};
 
 function getDots(): JSX.Element {
   return <MoreHorizontal size={24} />;
@@ -35,7 +39,7 @@ function getPageButton(
   );
 }
 
-export const PaginationPresentation: FC<Props> = (props) => {
+export const Pagination: FC<Props> = (props) => {
   const { currentPage, handleClick, totalPage, displayRange = 1 } = props;
 
   return (
