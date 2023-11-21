@@ -18,15 +18,17 @@ type Props = {
   displayRange?: number;
 };
 
-function getDots(): JSX.Element {
-  return <MoreHorizontal size={24} />;
-}
+const Dots: FC = () => <MoreHorizontal size={24} />;
 
-function getPageButton(
-  page: number,
-  handleClick: (page: number) => void,
-  isCurrentPage: boolean = false
-): JSX.Element | null {
+type PageButtonProps = {
+  page: number;
+  handleClick: (page: number) => void;
+  isCurrentPage?: boolean;
+};
+
+const PageButton: FC<PageButtonProps> | null = (props) => {
+  const { page, handleClick, isCurrentPage = false } = props;
+
   return (
     <Button
       key={page}
@@ -37,39 +39,53 @@ function getPageButton(
       {page}
     </Button>
   );
-}
+};
 
-export const Pagination: FC<Props> = (props) => {
-  const { currentPage, handleClick, totalPage, displayRange = 1 } = props;
+export const Pagination: FC<Props> = ({
+  currentPage,
+  handleClick,
+  totalPage,
+  displayRange = 1,
+}) => {
+  const fixedCurrentPage = currentPage > totalPage ? totalPage : currentPage;
 
   return (
     <div className="flex flex-row items-center space-x-5">
       <Button
         variant="outline"
-        disabled={currentPage === 1}
+        disabled={fixedCurrentPage === 1}
         className="rounded-full aspect-square p-2"
-        onClick={(): void => handleClick(currentPage - 1)}
+        onClick={(): void => handleClick(fixedCurrentPage - 1)}
       >
         <ChevronLeft />
       </Button>
 
-      {isPageOneRequired(currentPage, displayRange) &&
-        getPageButton(1, handleClick)}
-      {isLeftDotsRequired(currentPage, displayRange) && getDots()}
-
-      {getMiddleRange(currentPage, totalPage, displayRange).map((page) =>
-        getPageButton(page, handleClick, page === currentPage)
+      {isPageOneRequired(fixedCurrentPage, displayRange) && (
+        <PageButton page={1} handleClick={handleClick} />
       )}
+      {isLeftDotsRequired(fixedCurrentPage, displayRange) && <Dots />}
 
-      {isRightDotsRequired(currentPage, totalPage, displayRange) && getDots()}
-      {isTotalPageRequired(currentPage, totalPage, displayRange) &&
-        getPageButton(totalPage, handleClick)}
+      {getMiddleRange(fixedCurrentPage, totalPage, displayRange).map((page) => (
+        <PageButton
+          key={page}
+          page={page}
+          handleClick={handleClick}
+          isCurrentPage={page === fixedCurrentPage}
+        />
+      ))}
+
+      {isRightDotsRequired(fixedCurrentPage, totalPage, displayRange) && (
+        <Dots />
+      )}
+      {isTotalPageRequired(fixedCurrentPage, totalPage, displayRange) && (
+        <PageButton page={totalPage} handleClick={handleClick} />
+      )}
 
       <Button
         variant="outline"
-        disabled={currentPage === totalPage}
+        disabled={fixedCurrentPage === totalPage}
         className="rounded-full aspect-square p-2"
-        onClick={(): void => handleClick(currentPage + 1)}
+        onClick={(): void => handleClick(fixedCurrentPage + 1)}
       >
         <ChevronRight />
       </Button>

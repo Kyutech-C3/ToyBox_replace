@@ -1,9 +1,9 @@
-function range(start: number, end: number): number[] {
+const range = (start: number, end: number): number[] => {
   if (start > end) {
     return [];
   }
   return [...Array<number>(end - start + 1)].map((_, i) => start + i);
-}
+};
 
 export const isPageOneRequired = (
   currentPage: number,
