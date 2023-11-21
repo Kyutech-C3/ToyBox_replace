@@ -26,7 +26,7 @@ function getPageButton(
   return (
     <Button
       key={page}
-      variant={isCurrentPage ? 'secondary' : 'outline'}
+      variant={isCurrentPage ? 'default' : 'outline'}
       className="rounded-full aspect-square p-2 text-lg font-bold"
       onClick={(): void => handleClick(page)}
     >
