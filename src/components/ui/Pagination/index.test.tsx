@@ -2,6 +2,8 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 
+import { restrictRange } from './logic/restrictRange';
+
 import { Pagination } from '.';
 
 const testData = {
@@ -87,5 +89,11 @@ describe('ui/Pagination', () => {
     await userEvent.click(button);
 
     expect(mockHandleClick).toHaveBeenCalled();
+  });
+
+  it('restricts currentPage to be between 1 and totalPage', () => {
+    expect(restrictRange(0, 1, 10)).toBe(1);
+    expect(restrictRange(11, 1, 10)).toBe(10);
+    expect(restrictRange(5, 1, 10)).toBe(5);
   });
 });
