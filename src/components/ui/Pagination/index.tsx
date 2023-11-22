@@ -1,7 +1,9 @@
 import type { FC } from 'react';
 
-import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+import { Dots } from './items/Dots';
+import { PageButton } from './items/PageButton';
 import {
   getMiddleRange,
   isLeftDotsRequired,
@@ -11,34 +13,12 @@ import {
 } from './logic/CheckElementRequired';
 
 import { Button } from '@/components/ui/Button';
+
 type Props = {
   handleClick: (page: number) => void;
   totalPage: number;
   currentPage: number;
   displayRange?: number;
-};
-
-const Dots: FC = () => <MoreHorizontal size={24} />;
-
-type PageButtonProps = {
-  page: number;
-  handleClick: (page: number) => void;
-  isCurrentPage?: boolean;
-};
-
-const PageButton: FC<PageButtonProps> | null = (props) => {
-  const { page, handleClick, isCurrentPage = false } = props;
-
-  return (
-    <Button
-      key={page}
-      variant={isCurrentPage ? 'default' : 'outline'}
-      className="rounded-full aspect-square p-2 text-lg font-bold"
-      onClick={(): void => handleClick(page)}
-    >
-      {page}
-    </Button>
-  );
 };
 
 export const Pagination: FC<Props> = ({
@@ -47,45 +27,47 @@ export const Pagination: FC<Props> = ({
   totalPage,
   displayRange = 1,
 }) => {
-  const fixedCurrentPage = currentPage > totalPage ? totalPage : currentPage;
+  const formatCurrentPage = currentPage > totalPage ? totalPage : currentPage;
 
   return (
     <div className="flex flex-row items-center space-x-5">
       <Button
         variant="outline"
-        disabled={fixedCurrentPage === 1}
+        disabled={formatCurrentPage === 1}
         className="rounded-full aspect-square p-2"
-        onClick={(): void => handleClick(fixedCurrentPage - 1)}
+        onClick={(): void => handleClick(formatCurrentPage - 1)}
       >
         <ChevronLeft />
       </Button>
 
-      {isPageOneRequired(fixedCurrentPage, displayRange) && (
+      {isPageOneRequired(formatCurrentPage, displayRange) && (
         <PageButton page={1} handleClick={handleClick} />
       )}
-      {isLeftDotsRequired(fixedCurrentPage, displayRange) && <Dots />}
+      {isLeftDotsRequired(formatCurrentPage, displayRange) && <Dots />}
 
-      {getMiddleRange(fixedCurrentPage, totalPage, displayRange).map((page) => (
-        <PageButton
-          key={page}
-          page={page}
-          handleClick={handleClick}
-          isCurrentPage={page === fixedCurrentPage}
-        />
-      ))}
+      {getMiddleRange(formatCurrentPage, totalPage, displayRange).map(
+        (page) => (
+          <PageButton
+            key={page}
+            page={page}
+            handleClick={handleClick}
+            isCurrentPage={page === formatCurrentPage}
+          />
+        )
+      )}
 
-      {isRightDotsRequired(fixedCurrentPage, totalPage, displayRange) && (
+      {isRightDotsRequired(formatCurrentPage, totalPage, displayRange) && (
         <Dots />
       )}
-      {isTotalPageRequired(fixedCurrentPage, totalPage, displayRange) && (
+      {isTotalPageRequired(formatCurrentPage, totalPage, displayRange) && (
         <PageButton page={totalPage} handleClick={handleClick} />
       )}
 
       <Button
         variant="outline"
-        disabled={fixedCurrentPage === totalPage}
+        disabled={formatCurrentPage === totalPage}
         className="rounded-full aspect-square p-2"
-        onClick={(): void => handleClick(fixedCurrentPage + 1)}
+        onClick={(): void => handleClick(formatCurrentPage + 1)}
       >
         <ChevronRight />
       </Button>
