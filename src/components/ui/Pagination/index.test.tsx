@@ -10,7 +10,7 @@ const testData = {
   displayRange: 1,
 };
 
-describe('model/Pagination', () => {
+describe('ui/Pagination', () => {
   it('renders button correctly', () => {
     render(<Pagination {...testData} handleClick={jest.fn()} />);
 
