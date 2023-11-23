@@ -1,3 +1,5 @@
+import type { FC } from 'react';
+
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { Dots } from './items/Dots';
@@ -11,22 +13,22 @@ import {
 } from './logic/CheckElementRequired';
 import { restrictRange } from './logic/restrictRange';
 
-import type { PositiveInteger } from '@/types';
-
 import { Button } from '@/components/ui/Button';
 
-type Props<T extends number> = {
+type Props = {
   handleClick: (page: number) => void;
   totalPage: number;
   currentPage: number;
-  displayRange?: PositiveInteger<T>;
+  displayRange?: number;
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export const Pagination = <T extends number>(props: Props<T>) => {
-  const { handleClick, totalPage, currentPage, displayRange = 1 } = props;
-
-  // Format current page to be between 1 and totalPage ( 1 <= currentPage <= totalPage )
+export const Pagination: FC<Props> = ({
+  handleClick,
+  totalPage,
+  currentPage,
+  displayRange = 1,
+}: Props) => {
+  // Format current page to be between 1 and totalPage ( 1 <= formatCurrentPage <= totalPage )
   const formatCurrentPage = restrictRange(currentPage, 1, totalPage);
 
   return (
