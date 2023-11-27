@@ -81,7 +81,7 @@
     "@typescript-eslint/parser": "^6.11.0",
     "aspida": "^1.14.0",
     "autoprefixer": "^10.4.16",
-    "chromatic": "^7.6.0",
+    "chromatic": "^9.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cspell": "^8.0.0",
