@@ -59,8 +59,10 @@ export const URLInputPresentation: FC<Props> = ({
       </form>
       <UrlCounter count={links.length} max={maxAmount} />
     </div>
-    {warning.status !== 'ok' && (
-      <p className="text-destructive">{warning.message}</p>
-    )}
+    <div className="h-6">
+      {warning.status !== 'ok' && (
+        <p className="text-destructive">{warning.message}</p>
+      )}
+    </div>
   </div>
 );
