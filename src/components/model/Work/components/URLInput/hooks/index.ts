@@ -1,23 +1,44 @@
 import { useState } from 'react';
-import type { KeyboardEvent } from 'react';
+import type { ChangeEvent } from 'react';
 
-type IUseURLInput = {
+import { isValidUrl } from '../logics';
+
+type UseURLInputProps = {
   links: string[];
-  onInputKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void;
-  deleteLink: (link: string) => void;
-  invalidUrlWarning: boolean;
-  duplicateUrlWarning: boolean;
+  setLinks: (links: string[]) => void;
 };
 
-const isValidUrl = (url: string): boolean =>
-  url.match(/^https?:\/\/[\w/:%#&?()~.=+-]+$/) !== null;
+type IUseURLInput = {
+  deleteLink: (link: string) => void;
+  input: string;
+  warning: Warning;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: () => void;
+};
 
-export const useURLInput = (): IUseURLInput => {
-  const [invalidUrlWarning, setInvalidUrlWarning] = useState<boolean>(false);
-  const [duplicateUrlWarning, setDuplicateUrlWarning] =
-    useState<boolean>(false);
+export const warningMessages = {
+  ok: '',
+  invalidUrl: '正しいURLを入力してください',
+  duplicateUrl: 'このURLは既に登録されています',
+  empty: 'URLを入力してください',
+} as const;
 
-  const [links, setLinks] = useState<string[]>([]);
+type WarningStatus = 'ok' | 'invalid' | 'duplicate' | 'empty';
+type WarningMessage = (typeof warningMessages)[keyof typeof warningMessages];
+export type Warning = {
+  status: WarningStatus;
+  message: WarningMessage;
+};
+
+export const useURLInput = ({
+  links,
+  setLinks,
+}: UseURLInputProps): IUseURLInput => {
+  const [input, setInput] = useState<string>('');
+  const [warning, setWarning] = useState<Warning>({
+    status: 'ok',
+    message: warningMessages.ok,
+  });
 
   const addLink = (link: string): void => {
     setLinks([...links, link]);
@@ -27,33 +48,51 @@ export const useURLInput = (): IUseURLInput => {
     setLinks(links.filter((item) => item !== link));
   };
 
-  const onInputKeyDown = (e: KeyboardEvent<HTMLInputElement>): void => {
-    if (e.code !== 'Enter') {
-      if (invalidUrlWarning) setInvalidUrlWarning(false);
-      if (duplicateUrlWarning) setDuplicateUrlWarning(false);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const value = e.target.value;
+    setInput(value);
+
+    // 入力中は警告を消す
+    if (warning.status !== 'ok') {
+      setWarning({
+        status: 'ok',
+        message: warningMessages.ok,
+      });
+    }
+  };
+
+  const handleSubmit = (): void => {
+    if (input === '') {
+      setWarning({
+        status: 'empty',
+        message: warningMessages.empty,
+      });
       return;
     }
 
-    const link = e.currentTarget.value;
-
-    if (links.includes(link)) {
-      setDuplicateUrlWarning(true);
+    if (!isValidUrl(input)) {
+      setWarning({
+        status: 'invalid',
+        message: warningMessages.invalidUrl,
+      });
+      return;
+    } else if (links.includes(input)) {
+      setWarning({
+        status: 'duplicate',
+        message: warningMessages.duplicateUrl,
+      });
       return;
     }
-    if (!isValidUrl(link)) {
-      setInvalidUrlWarning(true);
-      return;
-    }
 
-    addLink(link);
-    e.currentTarget.value = '';
+    addLink(input);
+    setInput('');
   };
 
   return {
-    links,
-    onInputKeyDown,
     deleteLink,
-    invalidUrlWarning,
-    duplicateUrlWarning,
+    input,
+    warning,
+    handleChange,
+    handleSubmit,
   };
 };

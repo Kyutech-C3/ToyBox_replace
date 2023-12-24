@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import type { FC } from 'react';
 
 import { useURLInput } from '../hooks';
@@ -6,36 +5,31 @@ import { useURLInput } from '../hooks';
 import { URLInputPresentation } from './main';
 
 type Props = {
+  links: string[];
   setLinks: (links: string[]) => void;
   maxAmount: number;
 };
 
 export const URLInputContainer: FC<Props> = ({
+  links,
   setLinks,
   maxAmount,
 }: Props) => {
-  const {
-    deleteLink,
-    onInputKeyDown,
-    links,
-    invalidUrlWarning,
-    duplicateUrlWarning,
-  } = useURLInput();
-
-  useEffect(() => {
-    if (setLinks !== undefined) {
-      setLinks(links);
-    }
-  }, [links, setLinks]);
+  const { deleteLink, input, warning, handleChange, handleSubmit } =
+    useURLInput({
+      links,
+      setLinks,
+    });
 
   return (
     <URLInputPresentation
-      links={links}
-      onInputKeyDown={onInputKeyDown}
       deleteLink={deleteLink}
+      handleChange={handleChange}
+      handleSubmit={handleSubmit}
+      input={input}
+      links={links}
       maxAmount={maxAmount}
-      invalidUrlWarning={invalidUrlWarning}
-      duplicateUrlWarning={duplicateUrlWarning}
+      warning={warning}
     />
   );
 };

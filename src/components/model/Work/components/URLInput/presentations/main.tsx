@@ -1,26 +1,30 @@
-import type { FC, KeyboardEvent } from 'react';
+import type { ChangeEvent, FC, FormEvent } from 'react';
 
 import { UrlCounter } from './UrlCounter';
 import { UrlListElement } from './UrlListElement';
+
+import type { Warning } from '../hooks';
 
 import { Input } from '@/components/ui/Input';
 
 type Props = {
   links: string[];
-  onInputKeyDown: (event: KeyboardEvent<HTMLInputElement>) => void;
   deleteLink: (link: string) => void;
+  input: string;
+  warning: Warning;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSubmit: () => void;
   maxAmount: number;
-  invalidUrlWarning: boolean;
-  duplicateUrlWarning: boolean;
 };
 
 export const URLInputPresentation: FC<Props> = ({
   links,
-  onInputKeyDown,
   deleteLink,
+  input,
+  warning,
+  handleChange,
+  handleSubmit,
   maxAmount,
-  invalidUrlWarning,
-  duplicateUrlWarning,
 }: Props) => (
   <div>
     <p className="text-lg font-bold">URL</p>
@@ -35,20 +39,28 @@ export const URLInputPresentation: FC<Props> = ({
       ))}
     </div>
     <div className="flex flex-row mt-1 w-full">
-      <Input
-        type="url"
-        onKeyDown={onInputKeyDown}
-        disabled={links.length >= maxAmount}
-        placeholder={links.length >= maxAmount ? 'これ以上追加できません' : ''}
-        className="border-primary w-full h-10"
-      />
+      <form
+        onSubmit={(e: FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+        className="w-full"
+      >
+        <Input
+          type="url"
+          value={input}
+          onChange={handleChange}
+          disabled={links.length >= maxAmount}
+          placeholder={
+            links.length >= maxAmount ? 'これ以上追加できません' : ''
+          }
+          className="border-primary w-full h-10"
+        />
+      </form>
       <UrlCounter count={links.length} max={maxAmount} />
     </div>
-    {duplicateUrlWarning && (
-      <p className="text-destructive">このURLは既に追加されています！</p>
-    )}
-    {invalidUrlWarning && (
-      <p className="text-destructive">正しいURLを入力してください！</p>
+    {warning.status !== 'ok' && (
+      <p className="text-destructive">{warning.message}</p>
     )}
   </div>
 );

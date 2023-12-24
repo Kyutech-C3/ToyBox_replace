@@ -4,12 +4,24 @@ import userEvent from '@testing-library/user-event';
 
 import { URLInput } from '.';
 
+const useLinksAndSetLinks = (): [string[], jest.Mock] => {
+  const links: string[] = [];
+  const setLinks = jest.fn().mockImplementation((newLinks: string[]): void => {
+    links.splice(0, links.length);
+    links.push(...newLinks);
+  });
+
+  return [links, setLinks];
+};
+
 describe('model/URLInput', () => {
   it('renders input and added links correctly', async () => {
     const url = 'https://example.com';
 
+    const [links, setLinks] = useLinksAndSetLinks();
+
     const { container } = render(
-      <URLInput setLinks={jest.fn()} maxAmount={5} />
+      <URLInput links={links} setLinks={setLinks} maxAmount={5} />
     );
 
     const inputElement = container.querySelector('input');
@@ -21,9 +33,12 @@ describe('model/URLInput', () => {
 
   it('calls setLinks when url value changed', async () => {
     const baseUrl = 'https://example.com';
-    const mockFn = jest.fn();
 
-    const { container } = render(<URLInput setLinks={mockFn} maxAmount={5} />);
+    const [links, mockSetLinks] = useLinksAndSetLinks();
+
+    const { container } = render(
+      <URLInput links={links} setLinks={mockSetLinks} maxAmount={5} />
+    );
 
     const inputElement = container.querySelector('input');
     expect(inputElement).toBeInTheDocument();
@@ -35,10 +50,9 @@ describe('model/URLInput', () => {
       `${firstUrl}{Enter}`
     );
 
-    // one is for initial setup, another is for url value change
-    expect(mockFn).toHaveBeenCalledTimes(2);
+    expect(mockSetLinks).toHaveBeenCalledTimes(1);
 
-    const firstCallArgs: string[][] = mockFn.mock.calls[1] as string[][];
+    const firstCallArgs: string[][] = mockSetLinks.mock.calls[0] as string[][];
     expect(firstCallArgs[0] as string[]).toEqual([firstUrl]);
 
     // Second url addition
@@ -48,9 +62,9 @@ describe('model/URLInput', () => {
       `${secondUrl}{Enter}`
     );
 
-    expect(mockFn).toHaveBeenCalledTimes(3);
+    expect(mockSetLinks).toHaveBeenCalledTimes(2);
 
-    const secondCallArgs: string[][] = mockFn.mock.calls[2] as string[][];
+    const secondCallArgs: string[][] = mockSetLinks.mock.calls[1] as string[][];
     expect(secondCallArgs[0] as string[]).toEqual([firstUrl, secondUrl]);
 
     // Delete first url
@@ -63,17 +77,19 @@ describe('model/URLInput', () => {
 
     await userEvent.click(deleteButton as SVGSVGElement);
 
-    expect(mockFn).toHaveBeenCalledTimes(4);
+    expect(mockSetLinks).toHaveBeenCalledTimes(3);
 
-    const thirdCallArgs: string[][] = mockFn.mock.calls[3] as string[][];
+    const thirdCallArgs: string[][] = mockSetLinks.mock.calls[2] as string[][];
     expect(thirdCallArgs[0] as string[]).toEqual([secondUrl]);
   });
 
   it('rejects user input when the amount of links reached maxAmount', async () => {
     const baseUrl = 'https://example.com';
 
+    const [links, mockSetLinks] = useLinksAndSetLinks();
+
     const { container } = render(
-      <URLInput setLinks={jest.fn()} maxAmount={1} />
+      <URLInput links={links} setLinks={mockSetLinks} maxAmount={1} />
     );
 
     const inputElement = container.querySelector('input');
@@ -99,8 +115,10 @@ describe('model/URLInput', () => {
   it('rejects when duplicate url is tried to be added', async () => {
     const url = 'https://example.com';
 
+    const [links, mockSetLinks] = useLinksAndSetLinks();
+
     const { container } = render(
-      <URLInput setLinks={jest.fn()} maxAmount={5} />
+      <URLInput links={links} setLinks={mockSetLinks} maxAmount={5} />
     );
 
     const inputElement = container.querySelector('input');
@@ -117,8 +135,10 @@ describe('model/URLInput', () => {
   it('rejects when invalid text is tried to be added', async () => {
     const invalidText = 'this text is not a url';
 
+    const [links, mockSetLinks] = useLinksAndSetLinks();
+
     const { container } = render(
-      <URLInput setLinks={jest.fn()} maxAmount={5} />
+      <URLInput links={links} setLinks={mockSetLinks} maxAmount={5} />
     );
 
     const inputElement = container.querySelector('input');
