@@ -4,8 +4,10 @@ import userEvent from '@testing-library/user-event';
 
 import { URLInput } from '.';
 
-const useLinksAndSetLinks = (): [string[], jest.Mock] => {
-  const links: string[] = [];
+const useLinksAndSetLinks = (
+  defaultLinks?: string[]
+): [string[], jest.Mock] => {
+  const links: string[] = defaultLinks ? [...defaultLinks] : [];
   const setLinks = jest.fn().mockImplementation((newLinks: string[]): void => {
     links.splice(0, links.length);
     links.push(...newLinks);
@@ -31,7 +33,7 @@ describe('model/URLInput', () => {
     expect(screen.getByText(url)).toBeInTheDocument();
   });
 
-  it('calls setLinks when url value changed', async () => {
+  it('calls setLinks when a url added', async () => {
     const baseUrl = 'https://example.com';
 
     const [links, mockSetLinks] = useLinksAndSetLinks();
@@ -66,9 +68,16 @@ describe('model/URLInput', () => {
 
     const secondCallArgs: string[][] = mockSetLinks.mock.calls[1] as string[][];
     expect(secondCallArgs[0] as string[]).toEqual([firstUrl, secondUrl]);
+  });
 
-    // Delete first url
-    const firstUrlAddedElement = await screen.findByText(firstUrl);
+  it('calls setLinks when a url added', async () => {
+    const deleteUrl = 'https://example.com/1';
+    const remainUrl = 'https://example.com/2';
+    const [links, mockSetLinks] = useLinksAndSetLinks([deleteUrl, remainUrl]);
+
+    render(<URLInput links={links} setLinks={mockSetLinks} maxAmount={5} />);
+
+    const firstUrlAddedElement = await screen.findByText(deleteUrl);
     const parent = firstUrlAddedElement.parentElement;
     expect(parent).not.toBeNull();
 
@@ -77,10 +86,10 @@ describe('model/URLInput', () => {
 
     await userEvent.click(deleteButton as SVGSVGElement);
 
-    expect(mockSetLinks).toHaveBeenCalledTimes(3);
+    expect(mockSetLinks).toHaveBeenCalledTimes(1);
 
-    const thirdCallArgs: string[][] = mockSetLinks.mock.calls[2] as string[][];
-    expect(thirdCallArgs[0] as string[]).toEqual([secondUrl]);
+    const thirdCallArgs: string[][] = mockSetLinks.mock.calls[0] as string[][];
+    expect(thirdCallArgs[0] as string[]).toEqual([remainUrl]);
   });
 
   it('rejects user input when the amount of links reached maxAmount', async () => {
