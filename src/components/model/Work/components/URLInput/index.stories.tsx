@@ -28,8 +28,7 @@ export const Full: Story = {
   args: {
     maxAmount: 3,
   },
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  render: function Render(args) {
     const props = useURLInput();
     const links = [
       'https://example.com/1',
@@ -45,8 +44,7 @@ export const InvalidUrl: Story = {
   args: {
     maxAmount: 5,
   },
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  render: function Render(args) {
     const props = useURLInput();
 
     return <URLInputPresentation {...props} {...args} invalidUrlWarning />;
@@ -57,8 +55,7 @@ export const DuplicateUrl: Story = {
   args: {
     maxAmount: 5,
   },
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
+  render: function Render(args) {
     const props = useURLInput();
 
     return <URLInputPresentation {...props} {...args} duplicateUrlWarning />;
