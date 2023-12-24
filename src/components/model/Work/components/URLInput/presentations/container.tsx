@@ -23,7 +23,6 @@ export const URLInputContainer: FC<Props> = ({
   } = useURLInput();
 
   useEffect(() => {
-    console.log('test');
     if (setLinks !== undefined) {
       setLinks(links);
     }
