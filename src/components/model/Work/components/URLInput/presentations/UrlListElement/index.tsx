@@ -13,7 +13,7 @@ type Props = {
 export const UrlListElement: FC<Props> = ({
   link,
   deleteLink,
-  heightClassName: heightClassName,
+  heightClassName,
 }: Props) => (
   <div className={cn('w-full flex flex-row items-center', heightClassName)}>
     <Dot size={18} className="text-gray-700" />
