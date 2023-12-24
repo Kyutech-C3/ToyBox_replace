@@ -40,7 +40,7 @@ export const URLInputPresentation: FC<Props> = ({
         onKeyDown={onInputKeyDown}
         disabled={links.length >= maxAmount}
         placeholder={links.length >= maxAmount ? 'これ以上追加できません' : ''}
-        className="border-primary border-2 w-full h-10"
+        className="border-primary w-full h-10"
       />
       <UrlCounter count={links.length} max={maxAmount} />
     </div>
