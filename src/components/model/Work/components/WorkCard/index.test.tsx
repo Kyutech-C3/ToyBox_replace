@@ -66,7 +66,7 @@ describe('model/WorkCard', () => {
 
   it('renders the creation date', () => {
     const { getByText } = render(<WorkCard {...mockProps} />);
-    const creationDateElement = getByText(mockProps.createdAt);
+    const creationDateElement = getByText('2022/01/01');
     expect(creationDateElement).toBeInTheDocument();
   });
 });

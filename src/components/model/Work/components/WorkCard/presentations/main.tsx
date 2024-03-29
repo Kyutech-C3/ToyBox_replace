@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import { Avatar, AvatarImage } from '@/components/ui/Avatar';
 import { Card, CardContent, CardTitle } from '@/components/ui/Card';
-import { Typography } from '@/components/ui/Typography';
+import { DateLabel } from '@/components/ui/DateLabel';
 
 {
   /* TODO:user domainが作成されたらそこからimportする */
@@ -44,7 +44,7 @@ export const WorkCard: FC<Props> = ({
   creator,
   thumbnailUrl,
 }) => (
-  <Card className="p-2 w-60 h-80">
+  <Card className="p-2 w-60 h-80 shadow-lg">
     <div className="relative aspect-thumbnail rounded-sm overflow-hidden">
       <Visibility isPublic={isPublic} />
       <Image
@@ -54,13 +54,13 @@ export const WorkCard: FC<Props> = ({
         className="object-cover"
       />
     </div>
-    <CardContent className="flex p-0 gap-4 flex-col pt-4">
+    <CardContent className="flex p-0 gap-2 flex-col pt-4 px-2">
       <CardTitle className="text-ellipsis overflow-hidden text-nowrap">
         {title}
       </CardTitle>
       <div className="flex flex-row gap-2 overflow-scroll pb-2">
         {/* TODO:tag domainが作成されたらそこからimportする */}
-        {tags.map((tag) => (
+        {tags?.map((tag) => (
           <span
             key={tag.id}
             className="rounded-sm px-2 text-sm"
@@ -74,7 +74,7 @@ export const WorkCard: FC<Props> = ({
         {/* TODO:user domainが作成されたらそこからimportする */}
         <UserCard {...creator} />
         <span className="flex-grow text-end float-end">
-          <Typography variant="caption">{createdAt}</Typography>
+          <DateLabel date={createdAt} format="yyyy/MM/dd" />
         </span>
       </div>
     </CardContent>
