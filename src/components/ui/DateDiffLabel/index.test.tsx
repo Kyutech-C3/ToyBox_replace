@@ -1,12 +1,14 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen } from '@testing-library/react';
 
-import "@testing-library/jest-dom";
-import { DateDiffLabel } from ".";
+import '@testing-library/jest-dom';
+import { DateDiffLabel } from '.';
 
 describe('test ui/DateDiffLabel', () => {
   const now = new Date(2023, 5, 15);
- it('should display seconds when difference is less than a minute', () => {
-    render(<DateDiffLabel date={new Date(2023, 5, 14, 23, 59, 30)} now={now} />);
+  it('should display seconds when difference is less than a minute', () => {
+    render(
+      <DateDiffLabel date={new Date(2023, 5, 14, 23, 59, 30)} now={now} />
+    );
     expect(screen.getByText(/秒前/)).toBeInTheDocument();
   });
 
@@ -29,7 +31,6 @@ describe('test ui/DateDiffLabel', () => {
     render(<DateDiffLabel date={new Date(2023, 5, 8)} now={now} />);
     expect(screen.getByText(/週間前/)).toBeInTheDocument();
   });
-
 
   it('should display months when difference is less than a year', () => {
     render(<DateDiffLabel date={new Date(2023, 4, 15)} now={now} />);

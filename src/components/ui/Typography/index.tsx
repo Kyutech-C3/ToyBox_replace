@@ -48,8 +48,8 @@ export const Typography: FC<Props> = ({
     variant === 'strong'
       ? 'strong'
       : variant === 'body1' || variant === 'body2'
-      ? 'p'
-      : variant;
+        ? 'p'
+        : variant;
 
   return (
     <Tag className={cn(typographyVariants({ variant }), className)}>

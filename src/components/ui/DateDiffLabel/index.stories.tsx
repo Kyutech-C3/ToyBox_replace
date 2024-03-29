@@ -44,15 +44,15 @@ export const MonthAgo: Story = {
 
 export const TwoMonthAgo: Story = {
   args: { date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30 * 2) },
-}
+};
 
 export const ThreeMonthAgo: Story = {
   args: { date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30 * 3) },
-}
+};
 
 export const SixMonthAgo: Story = {
   args: { date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 30 * 6) },
-}
+};
 
 export const YearAgo: Story = {
   args: { date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 365) },
