@@ -1,11 +1,11 @@
-import type { Asset, UrlInfo } from '@/api/@types';
-// NOTE:User Asset UrlInfo GetTagはそのうち別の場所からimportするようにする
+import type { Tag } from '../../Tag';
+import type { User } from '../../User';
+import type { Asset, UrlInfo, Visibility } from '@/api/@types';
 
 export type WorkDetail = {
   id: string;
   title: string;
   description: string;
-  descriptionHtml: string;
   creator: User;
   assets: Asset[];
   urls: UrlInfo[];
@@ -28,22 +28,23 @@ export type Work = Pick<
   | 'createdAt'
   | 'title'
 >;
-{
-  /* TODO:tag domainが作成されたらそこからimportする */
-}
-type Tag = {
-  id: string;
-  name: string;
-  color: string;
-  textColor: string;
-};
-{
-  /* TODO:user domainが作成されたらそこからimportする */
-}
-type User = {
-  id: string;
-  avatarUrl: string;
-  displayName: string;
-};
 
 export type Works = Work[];
+
+export type GetWorksQuerySchema = {
+  page?: number | undefined;
+  limit?: number | undefined;
+  visibility?: Visibility | undefined;
+  tag_names?: string | undefined;
+  tag_ids?: string | undefined;
+  search_word?: string | undefined;
+};
+
+export type GetWorksQuery = {
+  page: number | undefined;
+  limit: number | undefined;
+  visibility: Visibility | undefined;
+  tagNames: string | undefined;
+  tagIds: string | undefined;
+  searchWord: string | undefined;
+};

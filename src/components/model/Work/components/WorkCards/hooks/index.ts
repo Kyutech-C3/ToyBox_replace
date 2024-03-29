@@ -1,9 +1,6 @@
-import { createNewWorkRepository } from '../../../repository';
-import { createNewWorkUsecase } from '../../../usecase';
+import { useWorkUsecase } from '../../../usecase';
 
 import type { Works } from '../../../types';
-
-import { useApiClient } from '@/hooks/useApiClient';
 
 type IUseWorkCards = {
   isEmpty: boolean;
@@ -11,9 +8,6 @@ type IUseWorkCards = {
 };
 
 export const useWorkCards = (): IUseWorkCards => {
-  const { client } = useApiClient();
-  const workRepository = createNewWorkRepository(client);
-  const workUsecase = createNewWorkUsecase({ workRepository });
-  const works = workUsecase.useGetWorksUsecase();
+  const { works } = useWorkUsecase();
   return { isEmpty: works.length === 0, works };
 };

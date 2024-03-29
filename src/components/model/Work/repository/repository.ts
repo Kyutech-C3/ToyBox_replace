@@ -1,26 +1,22 @@
-import { useMemo } from 'react';
+import { convertWorks } from '../utils';
+import { workQueryConverter } from '../utils/converter/workQuery';
 
-import { getWorks } from './get';
+import { getWorks } from './cruds';
 
-import type { GetWorksQuery } from './get';
-import type { ResWorks } from '@/api/@types';
-import type { ApiClient } from '@/hooks/useApiClient';
+import type { GetWorksQuery, Works } from '../types';
 
 import { useApiClient } from '@/hooks/useApiClient';
 
 export type IWorkRepository = {
-  getWorks: (query: GetWorksQuery) => Promise<ResWorks>;
+  getWorks: (
+    query: GetWorksQuery
+  ) => Promise<{ works: Works; totalCount: number }>;
 };
 
 export const useWorkRepository = (): IWorkRepository => {
-  const { client } = useApiClient();
-  return useMemo(() => createNewWorkRepository(client), [client]);
+  const { client: queryClient } = useApiClient();
+  return {
+    getWorks: async (query: GetWorksQuery) =>
+      convertWorks(await getWorks(queryClient, workQueryConverter(query))),
+  };
 };
-
-export const createNewWorkRepository = (
-  apiClient: ApiClient
-): IWorkRepository => ({
-  async getWorks(query): Promise<ResWorks> {
-    return getWorks(apiClient, query);
-  },
-});

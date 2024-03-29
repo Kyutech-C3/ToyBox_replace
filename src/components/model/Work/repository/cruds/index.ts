@@ -1,0 +1,1 @@
+export { getWorks } from './getWorks';
