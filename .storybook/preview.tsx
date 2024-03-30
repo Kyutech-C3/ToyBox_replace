@@ -1,8 +1,6 @@
 import type { Preview } from '@storybook/react';
 import '../src/app/globals.css';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import React from 'react';
-const client = new QueryClient();
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },
@@ -13,13 +11,7 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <QueryClientProvider client={client}>
-        <Story />
-      </QueryClientProvider>
-    ),
-  ],
+  decorators: [(Story) => <Story />],
 };
 
 export default preview;

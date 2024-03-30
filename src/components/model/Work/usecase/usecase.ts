@@ -1,5 +1,4 @@
 import { useAtomValue } from 'jotai';
-import useSWR from 'swr';
 
 import { useWorkRepository } from '../repository';
 import { genGetWorkKey } from '../utils';
@@ -7,6 +6,7 @@ import { genGetWorkKey } from '../utils';
 import type { IWorkRepository } from '../repository';
 import type { Works } from '../types';
 
+import useSWR from '@/libs/fetch';
 import { worksQueryAtom } from '@/state/worksQuery';
 
 export type ICreateNewWorkUsecase = {
