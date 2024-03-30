@@ -1,5 +1,4 @@
-import { useAtomValue } from 'jotai';
-
+import { useWorkQuery } from '../hooks/workQuery';
 import { useWorkRepository } from '../repository';
 import { genGetWorkKey } from '../utils';
 
@@ -7,7 +6,6 @@ import type { IWorkRepository } from '../repository';
 import type { Works } from '../types';
 
 import useSWR from '@/libs/fetch';
-import { worksQueryAtom } from '@/state/worksQuery';
 
 export type ICreateNewWorkUsecase = {
   workRepository: IWorkRepository;
@@ -20,7 +18,7 @@ export type IWorkUsecase = {
 
 export const useWorkUsecase = (): IWorkUsecase => {
   const workRepository = useWorkRepository();
-  const query = useAtomValue(worksQueryAtom);
+  const { query } = useWorkQuery();
   const { data: works } = useSWR(
     genGetWorkKey(query),
     () => workRepository.getWorks(query),

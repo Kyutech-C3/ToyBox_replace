@@ -8,3 +8,5 @@ export const tagConverter = (tag: GetTag): Tag => ({
   textColor: 'white',
   // NOTE: textColorをサーバーサイドで実装する
 });
+
+export const tagsConverter = (tags: GetTag[]): Tag[] => tags.map(tagConverter);

@@ -5,4 +5,12 @@ import type { ApiClient } from '@/hooks/useApiClient';
 export const getWorks = async (
   apiClient: ApiClient,
   query: GetWorksQuerySchema
-): Promise<ResWorks> => await apiClient.api.v1.works.$get({ query });
+): Promise<ResWorks> =>
+  await apiClient.api.v1.works.$get({
+    query,
+    config: {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+      },
+    },
+  });

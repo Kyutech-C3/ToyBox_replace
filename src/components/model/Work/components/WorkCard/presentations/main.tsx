@@ -48,14 +48,18 @@ export const WorkCard: FC<Props> = ({
     <div className="relative aspect-thumbnail rounded-sm overflow-hidden">
       <Visibility isPublic={isPublic} />
       <Image
-        src={thumbnailUrl}
+        src={
+          thumbnailUrl == 'string'
+            ? 'https://placehold.jp/150x150.png'
+            : thumbnailUrl
+        }
         alt={`${title}のサムネイル`}
         fill
         className="object-cover"
       />
     </div>
     <CardContent className="flex p-0 gap-2 flex-col pt-4 px-2">
-      <CardTitle className="text-ellipsis overflow-hidden text-nowrap">
+      <CardTitle className="text-ellipsis overflow-hidden h-7 text-nowrap ">
         {title}
       </CardTitle>
       <div className="flex flex-row gap-2 overflow-scroll pb-2">

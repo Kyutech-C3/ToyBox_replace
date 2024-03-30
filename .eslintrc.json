@@ -92,10 +92,7 @@
           // pageコンポーネントにおいて、他のpageコンポーネントからのimportを禁止する
           {
             "target": "./src/components/page/**/index.tsx",
-            "from": [
-              "./src/components/page/**/index.tsx",
-              "./node_modules/@radix-ui/"
-            ]
+            "from": ["./src/components/page/**/index.tsx"]
           },
           // appディレクトリ配下においてmodel,uiのimportを禁止する
           {

@@ -44,7 +44,7 @@ export type GetWorksQuery = {
   page: number | undefined;
   limit: number | undefined;
   visibility: Visibility | undefined;
-  tagNames: string | undefined;
-  tagIds: string | undefined;
+  tagNames: string[] | undefined;
+  tagIds: string[] | undefined;
   searchWord: string | undefined;
 };
