@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { WorkDetail } from '@/components/model/Work/components';
+import { WorkDetail } from '@/domains/Work/components';
 
 type Props = {
   params: {

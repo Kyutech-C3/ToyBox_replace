@@ -1,7 +1,7 @@
-import { WorkDetailPresentation  } from './presentations';
-import { WorkDetailEmptyPresentation  } from './presentations/empty';
-import { WorkDetailErrorPresentation  } from './presentations/error';
-import { WorkDetailLoadingPresentation  } from './presentations/loading';
+import { WorkDetailPresentation } from './presentations';
+import { WorkDetailEmptyPresentation } from './presentations/empty';
+import { WorkDetailErrorPresentation } from './presentations/error';
+import { WorkDetailLoadingPresentation } from './presentations/loading';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

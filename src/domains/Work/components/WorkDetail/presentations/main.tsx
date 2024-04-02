@@ -10,10 +10,10 @@ import type { WorkDetail } from '../../../types';
 
 import { Horizontal } from '@/components/Layout/Horizontal';
 import { Vertical } from '@/components/Layout/Vertical';
-import { UserCard } from '@/components/model/User/components/UserCard';
 import { Center } from '@/components/ui/Center';
 import { DateLabel } from '@/components/ui/DateLabel';
 import { Typography } from '@/components/ui/Typography';
+import { UserCard } from '@/domains/User/components/UserCard';
 
 type Props = {
   work: WorkDetail;

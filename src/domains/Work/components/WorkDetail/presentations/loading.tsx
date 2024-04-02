@@ -6,10 +6,10 @@ import { AssetListLoading } from '../../AssetList';
 
 import { Horizontal } from '@/components/Layout/Horizontal';
 import { Vertical } from '@/components/Layout/Vertical';
-import { UserCardLoading } from '@/components/model/User/components/UserCard';
 import { Center } from '@/components/ui/Center';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { Typography } from '@/components/ui/Typography';
+import { UserCardLoading } from '@/domains/User/components/UserCard';
 
 export const WorkDetailLoadingPresentation: FC = () => (
   <Center>

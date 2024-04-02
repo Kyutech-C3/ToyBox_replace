@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 
-import { UserCardLoading } from '@/components/model/User/components/UserCard';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Skeleton } from '@/components/ui/Skeleton';
+import { UserCardLoading } from '@/domains/User/components/UserCard';
 
 export const WorkCardLoading: FC = () => (
   <Card className="p-2 w-60 h-80">

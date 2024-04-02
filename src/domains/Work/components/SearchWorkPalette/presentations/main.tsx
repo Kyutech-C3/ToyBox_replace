@@ -5,7 +5,7 @@ import { Search } from 'lucide-react';
 
 import type { GetWorksQuery } from '../../../types';
 import type { Visibility } from '@/api/@types';
-import type { Tag } from '@/components/model/Tag';
+import type { Tag } from '@/domains/Tag';
 
 import { Horizontal } from '@/components/Layout/Horizontal';
 import { Vertical } from '@/components/Layout/Vertical';

@@ -2,10 +2,7 @@ import type { FC } from 'react';
 
 import { Vertical } from '@/components/Layout/Vertical';
 import { WithFooter } from '@/components/Layout/WithFooter';
-import {
-  SearchWorkPalette,
-  WorkCards,
-} from '@/components/model/Work/components';
+import { SearchWorkPalette, WorkCards } from '@/domains/Work/components';
 
 export const Screen: FC = () => (
   <Vertical className="gap-16 flex-grow" as="main">

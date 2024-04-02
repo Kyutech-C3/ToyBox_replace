@@ -3,8 +3,8 @@ import { AssetsConverter } from './asset';
 import type { Work, WorkDetail, Works } from '../../types';
 import type { Work as modelWork, ResWorks } from '@/api/@types';
 
-import { tagConverter } from '@/components/model/Tag/utils';
-import { userConverter } from '@/components/model/User/utils';
+import { tagConverter } from '@/domains/Tag/utils';
+import { userConverter } from '@/domains/User/utils';
 
 export const convertWork = (work: modelWork): Work => ({
   id: work.id,

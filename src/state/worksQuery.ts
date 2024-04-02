@@ -1,6 +1,6 @@
 import { atom } from 'jotai';
 
-import type { GetWorksQuery } from '@/components/model/Work';
+import type { GetWorksQuery } from '@/domains/Work';
 
 export const worksQueryAtom = atom<GetWorksQuery>({
   page: 1,

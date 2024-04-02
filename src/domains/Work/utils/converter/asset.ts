@@ -1,7 +1,7 @@
 import type { Asset } from '../../types';
 import type { AssetType, Asset as ModelAsset } from '@/api/@types';
 
-import { userConverter } from '@/components/model/User';
+import { userConverter } from '@/domains/User';
 
 export const AssetsConverter = (assets: ModelAsset[]): Asset[] =>
   assets

@@ -4,9 +4,9 @@ import { Globe, Lock } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { UserCard } from '@/components/model/User/components/UserCard';
 import { Card, CardContent, CardTitle } from '@/components/ui/Card';
 import { DateLabel } from '@/components/ui/DateLabel';
+import { UserCard } from '@/domains/User/components/UserCard';
 
 {
   /* TODO:user domainが作成されたらそこからimportする */

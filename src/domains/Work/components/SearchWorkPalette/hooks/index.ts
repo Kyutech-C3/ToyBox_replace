@@ -6,9 +6,9 @@ import { useWorkQuery } from '../../../hooks/workQuery';
 
 import type { GetWorksQuery } from '../../../types';
 import type { Visibility } from '@/api/@types';
-import type { Tag } from '@/components/model/Tag';
+import type { Tag } from '@/domains/Tag';
 
-import { useTagUsecase } from '@/components/model/Tag/usecase/usecase';
+import { useTagUsecase } from '@/domains/Tag/usecase/usecase';
 
 export type IUseSearchWorkPalette = {
   tags: Tag[];
