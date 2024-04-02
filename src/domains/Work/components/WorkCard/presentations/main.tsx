@@ -4,28 +4,12 @@ import { Globe, Lock } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import type { Tag } from '@/domains/Tag';
+import type { User } from '@/domains/User';
+
 import { Card, CardContent, CardTitle } from '@/components/ui/Card';
 import { DateLabel } from '@/components/ui/DateLabel';
 import { UserCard } from '@/domains/User/components/UserCard';
-
-{
-  /* TODO:user domainが作成されたらそこからimportする */
-}
-type User = {
-  id: string;
-  avatarUrl: string;
-  displayName: string;
-};
-
-{
-  /* TODO:tag domainが作成されたらそこからimportする */
-}
-type Tag = {
-  id: string;
-  name: string;
-  color: string;
-  textColor: string;
-};
 
 type Props = {
   work: {
