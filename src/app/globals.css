@@ -83,14 +83,15 @@
     animation-direction: normal, reverse;
     animation-timeline: view(inline);
     transform: perspective(200px);
-    animation-range: entry -40% entry 100%, exit 40% exit 100%;
-
+    animation-range:
+      entry -40% entry 100%,
+      exit 40% exit 100%;
   }
-    @keyframes left {
-      0% {
-        transform:  rotateY(30deg) scale(0.5);
-        opacity: 0.5;
-      }
+  @keyframes left {
+    0% {
+      transform: rotateY(30deg) scale(0.5);
+      opacity: 0.5;
+    }
   }
   @keyframes right {
     0% {
