@@ -7,7 +7,8 @@ type GridProps = {
   className?: string;
 };
 
-const gridVariants = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4';
+const gridVariants =
+  'grid mobile:grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-4 laptop:grid-cols-3 gap-4';
 
 export const Grid: FC<GridProps> = ({ children, className }) => (
   <div className={clsx(gridVariants, className)}>{children}</div>

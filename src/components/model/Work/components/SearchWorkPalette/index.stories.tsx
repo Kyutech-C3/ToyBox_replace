@@ -17,13 +17,13 @@ type Story = StoryObj<typeof SearchWorkPalettePresentation>;
 export const Default: Story = {
   args: {
     handleChangeKeyword: () => {},
-    handleChangeTag: () => {},
+    handleChangeTagId: () => {},
     handleChangeVisibility: () => {},
     query: {
       searchWord: '',
       tagNames: [],
       tagIds: ['1', '10'],
-      visibility: undefined,
+      visibility: 'public',
       page: 1,
       limit: 10,
     },

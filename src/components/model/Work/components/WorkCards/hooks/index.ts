@@ -1,4 +1,4 @@
-import { useWorkUsecase } from '../../../usecase';
+import { useWorksUsecase } from '../../../usecase';
 
 import type { Works } from '../../../types';
 
@@ -8,6 +8,7 @@ type IUseWorkCards = {
 };
 
 export const useWorkCards = (): IUseWorkCards => {
-  const { works } = useWorkUsecase();
+  const { works } = useWorksUsecase();
+
   return { isEmpty: works.length === 0, works };
 };

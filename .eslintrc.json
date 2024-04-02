@@ -12,6 +12,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "ignorePatterns": ["src/mocks/**/*"],
   "plugins": [
     "react",
     "import",

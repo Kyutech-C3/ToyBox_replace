@@ -15,9 +15,29 @@ module.exports = {
         '2xl': '1400px',
       },
     },
+    screens: {
+      mobile: '375px',
+      tablet: '640px',
+      laptop: '1024px',
+      desktop: '1280px',
+    },
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+          },
+        },
+      },
       aspectRatio: {
-        thumbnail: '21/16',
+        'thumbnail': '21/16',
+        'thumbnail-half': '21/32',
+        'half': '1/2',
       },
       colors: {
         'border': 'hsl(var(--border))',
@@ -124,5 +144,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
 };

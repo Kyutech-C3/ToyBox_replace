@@ -12,9 +12,12 @@
     "testid",
     "Usecase",
     "fakepath",
-    "toybox"
+    "toybox",
+    "gltf",
+    "drei",
+    "nocheck"
   ],
-  "ignorePaths": ["src/api/**/*"]
+  "ignorePaths": ["src/api/**/*", "src/mocks/**/*"]
   // flagWords - list of words to be always considered incorrect
   // This is useful for offensive words and common spelling errors.
   // For example "hte" should be "the"

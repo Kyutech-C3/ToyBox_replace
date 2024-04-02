@@ -1,5 +1,6 @@
 import type { FC } from 'react';
 
+import { UserCardLoading } from '@/components/model/User/components/UserCard';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Skeleton } from '@/components/ui/Skeleton';
 
@@ -10,7 +11,7 @@ export const WorkCardLoading: FC = () => (
       <Skeleton className="w-24 h-6" />
       <TagLoading />
       <div>
-        <UserLoading />
+        <UserCardLoading />
         <div className="flex-grow text-end float-end">
           <Skeleton className="w-20 h-4" />
         </div>
@@ -24,14 +25,5 @@ const TagLoading: FC = () => (
     {Array.from({ length: 3 }, (_, i) => (
       <Skeleton key={i} className="w-12 h-4" />
     ))}
-  </div>
-);
-
-const UserLoading: FC = () => (
-  <div className="flex items-center gap-2">
-    <Skeleton className="w-6 h-6 rounded-full" />
-    <div className="flex flex-col">
-      <Skeleton className="w-20 h-4" />
-    </div>
   </div>
 );

@@ -17,14 +17,14 @@ export const useWorkQuery = (): IUseWorkQuery => {
   const [query, setQuery] = useAtom(worksQueryAtom);
   const handleChangeKeyword = useCallback(
     (keyword: string): void => {
-      setQuery((prev) => ({ ...prev, searchWord: keyword }));
+      setQuery((prev: GetWorksQuery) => ({ ...prev, searchWord: keyword }));
     },
     [setQuery]
   );
 
   const handleChangeVisibility = useCallback(
     (visibility: Visibility): void => {
-      setQuery((prev) => ({ ...prev, visibility }));
+      setQuery((prev: GetWorksQuery) => ({ ...prev, visibility }));
     },
     [setQuery]
   );
@@ -32,13 +32,13 @@ export const useWorkQuery = (): IUseWorkQuery => {
   const handleChangeTagId = useCallback(
     (tagId: string): void => {
       if (query.tagIds?.includes(tagId)) {
-        setQuery((prev) => ({
+        setQuery((prev: GetWorksQuery) => ({
           ...prev,
-          tagIds: prev.tagIds?.filter((id) => id !== tagId),
+          tagIds: prev.tagIds?.filter((id) => id !== tagId) ?? [],
         }));
         return;
       }
-      setQuery((prev) => ({
+      setQuery((prev: GetWorksQuery) => ({
         ...prev,
         tagIds: [...(prev.tagIds ?? []), tagId],
       }));

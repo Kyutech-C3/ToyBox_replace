@@ -5,7 +5,7 @@ export const tagConverter = (tag: GetTag): Tag => ({
   id: tag.id,
   name: tag.name,
   color: tag.color,
-  textColor: 'white',
+  textColor: 'black',
   // NOTE: textColorをサーバーサイドで実装する
 });
 

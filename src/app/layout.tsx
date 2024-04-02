@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react';
 
 import { Inter } from 'next/font/google';
+
 import './globals.css';
+import { WithHeader } from '@/components/Layout/WithHeader';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,7 +14,9 @@ export const metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }): ReactNode => (
   <html lang="en">
-    <body className={`min-h-screen ${inter.className}`}>{children}</body>
+    <body className={`min-h-screen ${inter.className}`}>
+      <WithHeader className="h-screen flex flex-col">{children}</WithHeader>
+    </body>
   </html>
 );
 

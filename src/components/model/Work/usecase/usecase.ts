@@ -1,31 +1,44 @@
 import { useWorkQuery } from '../hooks/workQuery';
-import { useWorkRepository } from '../repository';
+import { worksRepository } from '../repository';
 import { genGetWorkKey } from '../utils';
 
-import type { IWorkRepository } from '../repository';
-import type { Works } from '../types';
+import type { WorkDetail, Works } from '../types';
 
 import useSWR from '@/libs/fetch';
 
-export type ICreateNewWorkUsecase = {
-  workRepository: IWorkRepository;
-};
-
-export type IWorkUsecase = {
+export type IWorksUsecase = {
   works: Works;
   totalCount: number;
 };
 
-export const useWorkUsecase = (): IWorkUsecase => {
-  const workRepository = useWorkRepository();
+export const useWorksUsecase = (): IWorksUsecase => {
   const { query } = useWorkQuery();
   const { data: works } = useSWR(
     genGetWorkKey(query),
-    () => workRepository.getWorks(query),
-    { suspense: true }
+    worksRepository.getWorks,
+    {
+      suspense: true,
+    }
   );
   return {
     works: works.works,
     totalCount: works.totalCount,
+  };
+};
+
+export type IWorkUsecase = {
+  work: WorkDetail;
+};
+
+export const useWorkUsecase = (workId: string): IWorkUsecase => {
+  const { data: work } = useSWR(
+    worksRepository.getWorkByIdKey(workId),
+    worksRepository.getWorkById,
+    {
+      suspense: true,
+    }
+  );
+  return {
+    work: work,
   };
 };

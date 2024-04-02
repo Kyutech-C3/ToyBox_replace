@@ -20,6 +20,9 @@ type Story = StoryObj<typeof WorkCardsContainer>;
 export const Default: Story = {
   render: () => (
     <WorkCardsPresentation
+      currentPage={1}
+      totalPage={10}
+      handleNextPage={() => {}}
       works={[
         {
           id: '2',

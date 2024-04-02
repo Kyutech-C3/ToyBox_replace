@@ -18,11 +18,14 @@ export const useTagUsecase = (): IUseTagUsecase => {
   const { data: tags } = useSWR(
     genGetTagKey(searchWord),
     () => getTags(searchWord),
-    { suspense: true }
+    {
+      suspense: true,
+      fallbackData: [],
+    }
   );
   return {
     searchWord,
     setSearchWord: (searchWord: string): void => setSearchWord(searchWord),
-    tags,
+    tags: tags,
   };
 };

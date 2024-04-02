@@ -20,12 +20,14 @@ export const WithHeader: FC<Props> = ({ children, className }) => (
 
 const Header = (): ReactNode => (
   <Vertical className="items-center p-4" as="header">
-    <Typography variant="h1" className="text-nowrap flex flex-row flex-grow">
-      <p className="text-orange-pop">T</p>
-      oy
-      <p className="text-orange-pop">B</p>
-      ox
-    </Typography>
+    <Link href="/" className="flex-grow">
+      <Typography variant="h1" className="text-nowrap flex flex-row ">
+        <p className="text-orange-pop">T</p>
+        oy
+        <p className="text-orange-pop">B</p>
+        ox
+      </Typography>
+    </Link>
     <Link href={C3_BLOG} className="underline">
       C3ブログ
     </Link>

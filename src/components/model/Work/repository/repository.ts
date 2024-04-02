@@ -1,22 +1,30 @@
-import { convertWorks } from '../utils';
+import { convertWorkDetail, convertWorks } from '../utils';
 import { workQueryConverter } from '../utils/converter/workQuery';
 
 import { getWorks } from './cruds';
+import { getWorkById } from './cruds/getWorkById';
 
-import type { GetWorksQuery, Works } from '../types';
-
-import { useApiClient } from '@/hooks/useApiClient';
+import type { GetWorksQuery, Work, WorkDetail, Works } from '../types';
 
 export type IWorkRepository = {
-  getWorks: (
-    query: GetWorksQuery
-  ) => Promise<{ works: Works; totalCount: number }>;
+  getWorksKey: (query: GetWorksQuery) => { url: string; query: GetWorksQuery };
+  getWorkByIdKey: (workId: string) => { url: string; workId: string };
+  getWorks: ({
+    query,
+  }: {
+    query: GetWorksQuery;
+  }) => Promise<{ works: Works; totalCount: number }>;
+  getWorkById: ({ workId }: { workId: Work['id'] }) => Promise<WorkDetail>;
 };
 
-export const useWorkRepository = (): IWorkRepository => {
-  const { client: queryClient } = useApiClient();
-  return {
-    getWorks: async (query: GetWorksQuery) =>
-      convertWorks(await getWorks(queryClient, workQueryConverter(query))),
-  };
+export const worksRepository: IWorkRepository = {
+  getWorksKey: (query) => ({ url: '/works', query }),
+  getWorkByIdKey: (workId) => ({
+    url: `/works/${workId}`,
+    workId,
+  }),
+  getWorks: async ({ query }) =>
+    convertWorks(await getWorks(workQueryConverter(query))),
+  getWorkById: async ({ workId }) =>
+    convertWorkDetail(await getWorkById(workId)),
 };

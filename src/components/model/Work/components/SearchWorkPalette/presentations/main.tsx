@@ -31,7 +31,7 @@ export const SearchWorkPalettePresentation: FC<Props> = ({
   handleChangeKeyword,
   handleChangeTagId,
 }: Props) => (
-  <Horizontal className="shadow-2xl shadow-orange-white flex-grow">
+  <Horizontal className="shadow-2xl shadow-orange-white h-[500px] w-[300px]">
     <Vertical className="bg-orange-pop p-1 items-center rounded-md flex-grow gap-1">
       <Search className="aspect-square h-full ml-1" color="white" />
       <Input
@@ -42,7 +42,7 @@ export const SearchWorkPalettePresentation: FC<Props> = ({
         }}
       />
     </Vertical>
-    <div className="border-orange-pop border-2 rounded-md p-4 h-full">
+    <div className="border-orange-pop border-2 rounded-md p-4 h-full overflow-scroll">
       <Typography className="text-xs">すべてのタグ</Typography>
       <List wrap="nowrap">
         {tags?.map((tag) => (

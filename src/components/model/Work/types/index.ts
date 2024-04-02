@@ -1,6 +1,6 @@
 import type { Tag } from '../../Tag';
 import type { User } from '../../User';
-import type { Asset, UrlInfo, Visibility } from '@/api/@types';
+import type { AssetType, UrlInfo, Visibility } from '@/api/@types';
 
 export type WorkDetail = {
   id: string;
@@ -41,10 +41,20 @@ export type GetWorksQuerySchema = {
 };
 
 export type GetWorksQuery = {
-  page: number | undefined;
-  limit: number | undefined;
-  visibility: Visibility | undefined;
-  tagNames: string[] | undefined;
-  tagIds: string[] | undefined;
-  searchWord: string | undefined;
+  page?: number;
+  limit?: number;
+  visibility?: Visibility;
+  tagNames?: string[];
+  tagIds?: string[];
+  searchWord?: string;
+};
+
+export type Asset = {
+  assetType: AssetType;
+  id: string;
+  user: User;
+  extension: string;
+  url: string;
+  createdAt: string;
+  updatedAt: string;
 };
