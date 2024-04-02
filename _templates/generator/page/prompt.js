@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const targetDirectory = './src/components/model';
+const targetDirectory = './src/domains';
 function getDirectories(basePath) {
   return fs.readdirSync(basePath).filter((file) => {
     const filePath = path.join(basePath, file);

@@ -1,5 +1,5 @@
 ---
-to: "<%= need_loading ? `src/components/model/${domains}/components/${name}/loading.tsx` : null %>"
+to: "<%= need_loading ? `src/domains/${domains}/components/${name}/loading.tsx` : null %>"
 ---
 import type { FC } from 'react';
 

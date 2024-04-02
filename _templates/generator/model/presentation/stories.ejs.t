@@ -1,5 +1,5 @@
 ---
-to: src/components/model/<%= domains %>/components/<%= name %>/index.stories.tsx
+to: src/domains/<%= domains %>/components/<%= name %>/index.stories.tsx
 ---
 
 <% if (need_loading) {%>import { <%= name %>Loading } from './loading';<% } %>
