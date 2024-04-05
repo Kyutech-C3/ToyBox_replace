@@ -16,9 +16,24 @@ export default meta;
 type Story = StoryObj<typeof TagList>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    tags: [
+      {
+        id: '1',
+        name: 'タグ名',
+        color: 'red',
+        textColor: 'white',
+      },
+      {
+        id: '2',
+        name: 'タグ名',
+        color: 'yellow',
+        textColor: 'white',
+      },
+    ],
+  },
 };
 
 export const Loading: Story = {
-  render: ()=> <TagListLoading />
+  render: () => <TagListLoading />,
 };

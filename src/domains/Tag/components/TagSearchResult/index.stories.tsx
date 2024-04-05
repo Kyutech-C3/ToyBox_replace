@@ -16,7 +16,24 @@ export default meta;
 
 type Story = StoryObj<typeof TagSearchResultPresentation>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  args: {
+    tags: [
+      {
+        id: '1',
+        name: 'タグ名',
+        color: 'red',
+        textColor: 'white',
+      },
+      {
+        id: '2',
+        name: 'タグ名',
+        color: 'yellow',
+        textColor: 'white',
+      },
+    ],
+  },
+};
 
 export const Empty: Story = {
   render: () => <TagSearchResultEmptyPresentation />,
