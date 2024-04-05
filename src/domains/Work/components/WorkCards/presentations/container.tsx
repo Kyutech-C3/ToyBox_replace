@@ -8,10 +8,10 @@ import { worksRepository } from '../../../repository';
 
 import { WorkCardsPresentation } from './main';
 
-export const WorkCardsContainer: FC = async () => {
-  const params = useSearchParams();
-  const currentPage = parseInt(params.get('page') || '1');
-  const router = useRouter();
+const WorkCardsFetchContainer: FC<{
+  currentPage: number;
+  handleNextPage: (page: number) => void;
+}> = async ({ currentPage, handleNextPage }) => {
   const { works, totalCount } = await worksRepository.getWorks({
     query: {
       page: currentPage,
@@ -22,7 +22,19 @@ export const WorkCardsContainer: FC = async () => {
       works={works}
       totalPage={Math.round(totalCount / 30)}
       currentPage={currentPage}
-      handleNextPage={(page) => router.push(`/?page=${page}`)}
+      handleNextPage={handleNextPage}
+    />
+  );
+};
+
+export const WorkCardsContainer: FC = () => {
+  const params = useSearchParams();
+  const currentPage = parseInt(params.get('page') || '1');
+  const router = useRouter();
+  return (
+    <WorkCardsFetchContainer
+      currentPage={currentPage}
+      handleNextPage={(page: number) => router.push(`/?page=${page}`)}
     />
   );
 };

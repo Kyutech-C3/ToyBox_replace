@@ -8,21 +8,16 @@ export const getAccessToken = async (): Promise<string | null> => {
   const refreshToken = getCookie('refresh-token');
   const accessToken = getCookie('access-token');
   const now = new Date().getTime();
-  console.log('refreshToken', refreshToken);
-  console.log('accessToken', accessToken);
   if (!refreshToken) {
     return null;
   }
 
   if (accessToken == undefined) {
-    const {
-      refresh_token: newRefreshToken,
-      access_token: newAccessToken,
-      expired_at: newExp,
-    } = await fetchAccessToken(refreshToken);
+    const { refresh_token: newRefreshToken, access_token: newAccessToken } =
+      await fetchAccessToken(refreshToken);
 
     setCookie('refresh-token', newRefreshToken, {
-      expires: new Date(newExp),
+      expires: new Date(now + 15 * 24 * 60 * 60 * 1000),
     });
 
     setCookie('access-token', newAccessToken, {

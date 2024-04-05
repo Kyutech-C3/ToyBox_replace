@@ -5,7 +5,7 @@ import { workQueryConverter } from '../utils/converter/workQuery';
 import { getWorkById, getWorks, postAsset } from './cruds';
 import { createWork } from './cruds/createWork';
 
-import type { DefaultWork } from '../components';
+import type { DefaultWork } from '../components/WorkEdit';
 import type { Asset, GetWorksQuery, Work, WorkDetail, Works } from '../types';
 import type { AssetType } from '@/api/@types';
 

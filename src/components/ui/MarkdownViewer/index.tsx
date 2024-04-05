@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { FC } from 'react';
 
 import { BlockQuote } from './components/blockQuote';
@@ -12,7 +13,7 @@ type Props = {
   children: string;
 };
 
-export const MarkdownViewer: FC<Props> = ({ children }) => (
+export const MarkdownViewer: FC<Props> = memo(({ children }) => (
   <Markdown
     className="prose w-4/5"
     components={{
@@ -38,4 +39,6 @@ export const MarkdownViewer: FC<Props> = ({ children }) => (
   >
     {children}
   </Markdown>
-);
+));
+
+MarkdownViewer.displayName = 'MarkdownViewer';

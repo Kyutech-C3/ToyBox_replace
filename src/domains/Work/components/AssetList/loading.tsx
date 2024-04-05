@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 
-import { AssetCard, SelectIndex } from './main';
+import { AssetCard } from './assetRender';
+import { SelectIndex } from './main';
 
 import { Horizontal } from '@/components/Layout/Horizontal';
 import { Skeleton } from '@/components/ui/Skeleton';

@@ -1,7 +1,7 @@
 import { AssetsConverter } from './asset';
 import { urlsConverter, urlsConverterToBaseURLInfo } from './url';
 
-import type { DefaultWork } from '../../components';
+import type { DefaultWork } from '../../components/WorkEdit';
 import type { Work, WorkDetail, Works } from '../../types';
 import type { Work as modelWork, PostWork, ResWorks } from '@/api/@types';
 

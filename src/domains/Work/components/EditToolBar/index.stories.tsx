@@ -1,4 +1,3 @@
-
 import { EditToolBar } from './main';
 
 import type { Meta, StoryObj } from '@storybook/react';
@@ -18,5 +17,3 @@ type Story = StoryObj<typeof EditToolBar>;
 export const Default: Story = {
   args: {},
 };
-
-

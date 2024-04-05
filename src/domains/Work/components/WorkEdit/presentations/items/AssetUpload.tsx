@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { AssetRender } from '../../../AssetList';
+import { AssetRender } from '../../../AssetList/assetRender';
 
 import type { Asset } from '@/domains/Work/types';
 

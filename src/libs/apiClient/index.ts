@@ -1,5 +1,5 @@
 import aspida from '@aspida/fetch';
-import qs from 'qs';
+import { stringify } from 'qs';
 
 import { getAccessToken } from './getAccessToken';
 
@@ -24,7 +24,7 @@ export const apiClient = api(
       throwHttpErrors: true,
       mode: 'cors',
       paramsSerializer: (s): string =>
-        qs.stringify(s, { arrayFormat: 'brackets' }),
+        stringify(s, { arrayFormat: 'brackets' }),
     }
   )
 );
