@@ -16,7 +16,13 @@ export default meta;
 type Story = StoryObj<typeof UserCard>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    user: {
+      id: '1',
+      displayName: 'ユーザー名',
+      avatarUrl: 'https://placehold.jp/150x150.png',
+    },
+  },
 };
 
 export const Loading: Story = {
