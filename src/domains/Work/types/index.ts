@@ -57,9 +57,6 @@ export type GetWorksQuery = {
 export type Asset = {
   assetType: AssetType;
   id: string;
-  user: User;
   extension: string;
   url: string;
-  createdAt: string;
-  updatedAt: string;
 };

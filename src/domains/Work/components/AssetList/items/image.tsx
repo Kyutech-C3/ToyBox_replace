@@ -9,11 +9,6 @@ type ItemProps = {
 };
 export const ImageAsset: FC<ItemProps> = ({ asset }) => (
   <div className="w-full h-full relative">
-    <Image
-      className=" object-contain"
-      fill
-      src={asset.url}
-      alt={`${asset.user.displayName}の作品`}
-    />
+    <Image className=" object-contain" fill src={asset.url} alt="投稿画像" />
   </div>
 );
