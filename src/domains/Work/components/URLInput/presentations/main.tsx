@@ -56,7 +56,7 @@ export const URLInputPresentation: FC<Props> = ({
             placeholder={
               links.length >= maxAmount ? 'これ以上追加できません' : ''
             }
-            className="border-primary w-full h-10 pr-12"
+            className="border-orange-pop w-full h-10 pr-12"
           />
           <div className="absolute right-0 top-0 h-10">
             <UrlCounter count={links.length} max={maxAmount} />

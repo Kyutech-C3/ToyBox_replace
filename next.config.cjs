@@ -8,6 +8,9 @@ const nextConfig = {
       {
         hostname: 's3.ap-northeast-1.wasabisys.com',
       },
+      {
+        hostname: 's3.ap-northeast-2.wasabisys.com',
+      },
     ],
   },
 };

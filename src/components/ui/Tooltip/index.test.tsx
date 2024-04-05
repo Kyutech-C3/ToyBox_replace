@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import '@testing-library/jest-dom';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '.';
+import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '.';
 
 // TooltipContentコンポーネントの基本的なレンダリングをテストします
 describe('ui/Tooltip', () => {

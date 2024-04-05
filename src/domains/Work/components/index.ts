@@ -9,3 +9,7 @@ export * from './SearchWorkPalette';
 export * from './AssetList';
 
 export * from './WorkDetail';
+
+export * from './WorkEdit';
+
+export * from './EditToolBar';

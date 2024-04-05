@@ -1,22 +1,24 @@
 'use client';
 
-import { useRef, useEffect, useState, Suspense, lazy } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import type { FC, ReactNode } from 'react';
 
-const Gltf = lazy(() =>
-  import('@react-three/drei').then((mod) => ({ default: mod.Gltf }))
-);
+// const Gltf = lazy(() =>
+//   import('@react-three/drei').then((mod) => ({ default: mod.Gltf }))
+// );
 
-const OrbitControls = lazy(() =>
-  import('@react-three/drei').then((mod) => ({ default: mod.OrbitControls }))
-);
+// const OrbitControls = lazy(() =>
+//   import('@react-three/drei').then((mod) => ({ default: mod.OrbitControls }))
+// );
 
-const Canvas = lazy(() =>
-  import('@react-three/fiber').then((mod) => ({ default: mod.Canvas }))
-);
+// const Canvas = lazy(() =>
+//   import('@react-three/fiber').then((mod) => ({ default: mod.Canvas }))
+// );
 
 import { ArrowLeftCircle, ArrowRightCircle } from 'lucide-react';
 import Image from 'next/image';
+
+import { ModelAsset } from './modelAsset';
 
 import type { Asset } from '../../types';
 
@@ -35,7 +37,7 @@ type CardProps = {
 };
 
 export const AssetCard: FC<CardProps> = ({ children, className }) => (
-  <FullScreen className={cn('aspect-thumbnail scale-item p-8', className)}>
+  <FullScreen className={cn('aspect-thumbnail p-8', className)}>
     <div className="h-full bg-red-500 rounded-md">{children}</div>
   </FullScreen>
 );
@@ -92,21 +94,8 @@ const AudioAsset: FC<ItemProps> = ({ asset }) => {
   );
 };
 
-const ModelAsset: FC<ItemProps> = ({ asset }) => (
-  <div className="w-full h-full">
-    <Suspense fallback={<p>...loading</p>}>
-      <Canvas>
-        <OrbitControls />
-        <Model url={asset.url} />
-      </Canvas>
-    </Suspense>
-  </div>
-);
-
-const Model: FC<{ url: string }> = ({ url }) => <Gltf src={url} />;
-
 const ZipAsset: FC<ItemProps> = ({ asset }) => (
-  <div>this is ZipAsset {asset.url} </div>
+  <div className="">this is zip asset {asset.id}</div>
 );
 
 export const AssetList: FC<Props> = ({ assets }) => {
@@ -148,33 +137,17 @@ export const AssetList: FC<Props> = ({ assets }) => {
         className="w-[1000px] aspect-video snap-mandatory snap-x flex flex-row overflow-x-scroll scroll-smooth duration-300"
         ref={ref}
       >
-        {assets.map((asset, index) => (
-          <AssetCard
-            key={asset.url}
-            className={cn(
+        {assets.map((asset, index) =>
+          AssetRender(
+            asset,
+            cn(
+              'scale-item',
               index == 0 ? 'ml-1/2' : '',
               index == assets.length - 1 ? 'mr-1/2' : '',
               isScroll ? '' : 'snap-center'
-            )}
-          >
-            {((): ReactNode => {
-              switch (asset.assetType) {
-                case 'image':
-                  return <ImageAsset asset={asset} />;
-                case 'video':
-                  return <VideoAsset asset={asset} />;
-                case 'music':
-                  return <AudioAsset asset={asset} />;
-                case 'model':
-                  return <ModelAsset asset={asset} />;
-                case 'zip':
-                  return <ZipAsset asset={asset} />;
-                default:
-                  return null;
-              }
-            })()}
-          </AssetCard>
-        ))}
+            )
+          )
+        )}
       </div>
       <SelectIndex
         max={assets.length}
@@ -184,6 +157,30 @@ export const AssetList: FC<Props> = ({ assets }) => {
     </Horizontal>
   );
 };
+
+export const AssetRender = (
+  asset: Asset,
+  className: string = ''
+): ReactNode => (
+  <AssetCard key={asset.url} className={className}>
+    {((): ReactNode => {
+      switch (asset.assetType) {
+        case 'image':
+          return <ImageAsset asset={asset} />;
+        case 'video':
+          return <VideoAsset asset={asset} />;
+        case 'music':
+          return <AudioAsset asset={asset} />;
+        case 'model':
+          return <ModelAsset asset={asset} />;
+        case 'zip':
+          return <ZipAsset asset={asset} />;
+        default:
+          return <></>;
+      }
+    })()}
+  </AssetCard>
+);
 
 export const SelectIndex = ({
   index,

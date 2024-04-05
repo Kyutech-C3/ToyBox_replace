@@ -1,7 +1,9 @@
 import { AssetsConverter } from './asset';
+import { urlsConverter, urlsConverterToBaseURLInfo } from './url';
 
+import type { DefaultWork } from '../../components';
 import type { Work, WorkDetail, Works } from '../../types';
-import type { Work as modelWork, ResWorks } from '@/api/@types';
+import type { Work as modelWork, PostWork, ResWorks } from '@/api/@types';
 
 import { tagConverter } from '@/domains/Tag/utils';
 import { userConverter } from '@/domains/User/utils';
@@ -23,13 +25,23 @@ export const convertWorkDetail = (work: modelWork): WorkDetail => ({
   assets: AssetsConverter(work.assets),
   creator: userConverter(work.user),
   isPublic: work.visibility === 'public',
-  urls: work.urls,
+  urls: urlsConverter(work.urls),
   thumbnailUrl: work.thumbnail.url,
   tags: work.tags.map((tag) => tagConverter(tag)),
   favoriteCount: work.favorite_count,
   isFavorite: work.is_favorite,
   createdAt: work.created_at,
   updatedAt: work.updated_at,
+});
+
+export const convertCreateWork = (work: DefaultWork): PostWork => ({
+  title: work.title,
+  description: work.description,
+  visibility: work.isPublic ? 'public' : 'private',
+  tags_id: work.tags.map((tag) => tag.id),
+  thumbnail_asset_id: work.thumbnail.id,
+  urls: urlsConverterToBaseURLInfo(work.urls),
+  assets_id: work.assets.map((asset) => asset.id),
 });
 
 export const convertWorks = (

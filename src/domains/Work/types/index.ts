@@ -1,6 +1,11 @@
 import type { Tag } from '../../Tag';
 import type { User } from '../../User';
-import type { AssetType, UrlInfo, Visibility } from '@/api/@types';
+import type { AssetType, Visibility } from '@/api/@types';
+
+export type URL = {
+  url: string;
+  urlType: string;
+};
 
 export type WorkDetail = {
   id: string;
@@ -8,7 +13,7 @@ export type WorkDetail = {
   description: string;
   creator: User;
   assets: Asset[];
-  urls: UrlInfo[];
+  urls: URL[];
   isPublic: boolean;
   tags: Tag[];
   thumbnailUrl: string;

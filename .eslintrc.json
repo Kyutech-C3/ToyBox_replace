@@ -36,6 +36,7 @@
     // 未使用のインポートを禁止
     "unused-imports/no-unused-imports": "error",
 
+    "@typescript-eslint/no-misused-promises": "off",
     // JSXのブール属性の値を明示的に指定する
     "react/jsx-boolean-value": "error",
 

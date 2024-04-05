@@ -10,7 +10,9 @@ describe('ui/Buttonのテスト', () => {
       container: { firstChild },
     } = render(<Button>test</Button>);
 
-    expect(firstChild).toHaveClass('bg-primary text-primary-foreground');
+    expect(firstChild).toHaveClass(
+      'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-orange-pop text-primary-foreground hover:bg-orange-sub h-10 px-4 py-2'
+    );
   });
 
   // Test rendering with 'secondary' variant
@@ -19,7 +21,9 @@ describe('ui/Buttonのテスト', () => {
       container: { firstChild },
     } = render(<Button variant="secondary">test</Button>);
 
-    expect(firstChild).toHaveClass('bg-secondary text-secondary-foreground');
+    expect(firstChild).toHaveClass(
+      'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary text-secondary-foreground hover:bg-secondary/80 h-10 px-4 py-2'
+    );
   });
 
   // Test rendering with 'destructive' variant
@@ -48,7 +52,9 @@ describe('ui/Buttonのテスト', () => {
       container: { firstChild },
     } = render(<Button variant="link">test</Button>);
 
-    expect(firstChild).toHaveClass('text-primary underline-offset-4');
+    expect(firstChild).toHaveClass(
+      'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-orange-pop underline-offset-4 hover:underline h-10 px-4 py-2'
+    );
   });
 
   it('renders children correctly', () => {

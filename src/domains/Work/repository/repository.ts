@@ -1,10 +1,13 @@
-import { convertWorkDetail, convertWorks } from '../utils';
+import { convertCreateWork, convertWorkDetail, convertWorks } from '../utils';
+import { AssetConverter } from '../utils/converter/asset';
 import { workQueryConverter } from '../utils/converter/workQuery';
 
-import { getWorks } from './cruds';
-import { getWorkById } from './cruds/getWorkById';
+import { getWorkById, getWorks, postAsset } from './cruds';
+import { createWork } from './cruds/createWork';
 
-import type { GetWorksQuery, Work, WorkDetail, Works } from '../types';
+import type { DefaultWork } from '../components';
+import type { Asset, GetWorksQuery, Work, WorkDetail, Works } from '../types';
+import type { AssetType } from '@/api/@types';
 
 export type IWorkRepository = {
   getWorksKey: (query: GetWorksQuery) => { url: string; query: GetWorksQuery };
@@ -15,6 +18,20 @@ export type IWorkRepository = {
     query: GetWorksQuery;
   }) => Promise<{ works: Works; totalCount: number }>;
   getWorkById: ({ workId }: { workId: Work['id'] }) => Promise<WorkDetail>;
+  uploadAsset: ({
+    assetType,
+    file,
+  }: {
+    assetType: AssetType;
+    file: File;
+  }) => Promise<Asset>;
+  createWork: ({
+    work,
+    postDiscord,
+  }: {
+    work: DefaultWork;
+    postDiscord: boolean;
+  }) => Promise<WorkDetail>;
 };
 
 export const worksRepository: IWorkRepository = {
@@ -27,4 +44,8 @@ export const worksRepository: IWorkRepository = {
     convertWorks(await getWorks(workQueryConverter(query))),
   getWorkById: async ({ workId }) =>
     convertWorkDetail(await getWorkById(workId)),
+  uploadAsset: async ({ assetType, file }) =>
+    AssetConverter(await postAsset(assetType, file)),
+  createWork: async ({ work, postDiscord }) =>
+    convertWorkDetail(await createWork(convertCreateWork(work), postDiscord)),
 };
