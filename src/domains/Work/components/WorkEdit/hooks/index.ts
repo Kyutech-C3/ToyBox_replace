@@ -35,6 +35,7 @@ type IUseWorkEdit = {
   }>;
   links: string[];
   assets: Asset[];
+  handleSetTag: (tag: Tag) => void;
   handleEditDescription: (description: string) => void;
   handleSetLinks: (newLinks: string[]) => void;
   handleUploadAssets: (files: FileList) => Promise<void>;
@@ -124,7 +125,7 @@ export const useWorkEdit = (
     description: watch('description'),
     thumbnailUrl: watch('thumbnail').url,
     createdAt: '2021-09-01T00:00:00Z',
-    tags: [],
+    tags: watch('tags'),
     isPublic: watch('isPublic'),
     creator: {
       id: '1',
@@ -136,6 +137,18 @@ export const useWorkEdit = (
 
   const handleSetLinks = (newLinks: string[]): void => {
     setLinks(newLinks);
+  };
+
+  const handleSetTag = (tag: Tag): void => {
+    console.log(tag);
+    if (watch('tags').some((t) => t.id === tag.id)) {
+      setValue(
+        'tags',
+        watch('tags').filter((t) => t.id !== tag.id)
+      );
+    } else {
+      setValue('tags', [...watch('tags'), tag]);
+    }
   };
 
   const handleUploadThumbnail = async (file: File): Promise<void> => {
@@ -185,7 +198,7 @@ export const useWorkEdit = (
     assets: watch('assets'),
     previewWork,
     errors,
-
+    handleSetTag,
     handleSetLinks,
     handleUploadAssets,
     handlePublish: handlePublishWork,

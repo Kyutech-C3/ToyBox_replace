@@ -6,8 +6,6 @@ import { SearchWorkPalettePresentation } from './main';
 
 export const SearchWorkPaletteContainer: FC = () => {
   const {
-    tags,
-    query,
     keyword,
     setSearchWord,
     handleChangeKeyword,
@@ -17,8 +15,6 @@ export const SearchWorkPaletteContainer: FC = () => {
 
   return (
     <SearchWorkPalettePresentation
-      tags={tags}
-      query={query}
       keyword={keyword}
       setSearchWord={setSearchWord}
       handleChangeKeyword={handleChangeKeyword}

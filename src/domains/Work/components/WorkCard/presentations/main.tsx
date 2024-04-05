@@ -9,6 +9,7 @@ import type { User } from '@/domains/User';
 
 import { Card, CardContent, CardTitle } from '@/components/ui/Card';
 import { DateLabel } from '@/components/ui/DateLabel';
+import { TagList } from '@/domains/Tag/components/TagList';
 import { UserCard } from '@/domains/User/components/UserCard';
 
 type Props = {
@@ -48,18 +49,7 @@ export const WorkCard: FC<Props> = ({
       <CardTitle className="text-ellipsis overflow-hidden h-7 text-nowrap ">
         {title}
       </CardTitle>
-      <div className="flex flex-row gap-2 overflow-scroll pb-2">
-        {/* TODO:tag domainが作成されたらそこからimportする */}
-        {tags?.map((tag) => (
-          <span
-            key={tag.id}
-            className="rounded-sm px-2 text-sm text-nowrap"
-            style={{ backgroundColor: tag.color, color: tag.textColor }}
-          >
-            {tag.name}
-          </span>
-        ))}
-      </div>
+      <TagList tags={tags} className="overflow-scroll z-50" />
       <div>
         <UserCard user={creator} className="z-20" />
         <span className="flex-grow text-end float-end">

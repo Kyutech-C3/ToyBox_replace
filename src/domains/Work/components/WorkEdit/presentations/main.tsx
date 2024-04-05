@@ -23,6 +23,7 @@ import { Vertical } from '@/components/Layout/Vertical';
 import { Typography } from '@/components/ui/Typography';
 import { Separator } from '@/components/ui/separator';
 import { Textarea } from '@/components/ui/textarea';
+import { TagSearchBox } from '@/domains/Tag/components/TagSearchBox';
 
 type Props = {
   defaultWork: DefaultWork | undefined;
@@ -49,6 +50,7 @@ type Props = {
   }>;
   handleChangePostDiscord: (value: boolean) => void;
   handlePublish: () => Promise<WorkDetail>;
+  handleSetTag: (tag: Tag) => void;
   handleSetLinks: (links: string[]) => void;
   handleUploadAssets: (files: FileList) => Promise<void>;
   handleUploadThumbnail: (file: File) => Promise<void>;
@@ -67,6 +69,7 @@ export const WorkEditPresentation: FC<Props> = ({
   errors,
   postDiscord,
   handleSetLinks,
+  handleSetTag,
   handleChangePostDiscord,
   handlePublish,
   handleChangeCursor,
@@ -88,6 +91,8 @@ export const WorkEditPresentation: FC<Props> = ({
           handleUploadThumbnail={handleUploadThumbnail}
         />
         <AssetUpload handleUploadAssets={handleUploadAssets} assets={assets} />
+        <Typography className="text-lg font-bold">タグ</Typography>
+        <TagSearchBox handleTagClick={handleSetTag} />
         <URLInput links={links} maxAmount={5} setLinks={handleSetLinks} />
       </Horizontal>
       <Horizontal>

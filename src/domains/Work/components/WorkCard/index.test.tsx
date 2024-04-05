@@ -54,8 +54,6 @@ describe('model/WorkCard', () => {
     mockProps.tags.forEach((tag) => {
       const tagElement = getByText(tag.name);
       expect(tagElement).toBeInTheDocument();
-      expect(tagElement).toHaveStyle(`background-color: ${tag.color}`);
-      expect(tagElement).toHaveStyle('color: white');
     });
   });
 

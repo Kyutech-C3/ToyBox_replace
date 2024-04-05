@@ -1,24 +1,14 @@
-import type { CSSProperties, FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import clsx from 'clsx';
 
 type ListProps = {
   children: ReactNode;
   className?: string;
-  wrap?: CSSProperties['flexWrap'];
 };
 
-export const List: FC<ListProps> = ({ children, className, wrap }) => (
-  <ul
-    className={clsx(
-      'flex flex-row gap-4',
-      wrap && 'flex-wrap',
-      !wrap && 'flex-nowrap',
-      className
-    )}
-  >
-    {children}
-  </ul>
+export const List: FC<ListProps> = ({ children, className }) => (
+  <ul className={clsx('flex flex-row gap-4', className)}>{children}</ul>
 );
 
 type ListItemProps = {
