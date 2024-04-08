@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 
-import { Heart, Link, Megaphone, Share2, Tag } from 'lucide-react';
+import { Heart, LinkIcon, Megaphone, Share2, Tag } from 'lucide-react';
+import Link from 'next/link';
 
 import { AssetList } from '../../AssetList';
 
@@ -51,8 +52,8 @@ export const WorkDetailPresentation: FC<Props> = ({ work }: Props) => (
       <Horizontal>
         {work.urls.map((url) => (
           <Vertical key={url.url}>
-            <Link size={20} className="text-orange-pop" />
-            <Typography>{url.url}</Typography>
+            <LinkIcon size={20} className="text-orange-pop" />
+            <Link href={url.url}>{url.url}</Link>
           </Vertical>
         ))}
       </Horizontal>
