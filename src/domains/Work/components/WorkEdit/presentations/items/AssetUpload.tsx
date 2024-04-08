@@ -32,7 +32,7 @@ export const AssetUpload: FC<Props> = ({ handleUploadAssets, assets }) => (
         画像 [ .png .jpg .jpeg .bmp .gif ]
       </Typography>
       <Typography variant="body2" className="text-xs text-gray-500 mx-4">
-        動画 [ .mp4 mov ]
+        動画 [ .mp4 .mov ]
       </Typography>
       <Typography variant="body2" className="text-xs text-gray-500 mx-4">
         音源 [ .mp3 .wav .m4a ]
@@ -41,7 +41,7 @@ export const AssetUpload: FC<Props> = ({ handleUploadAssets, assets }) => (
         モデル [ .gltf .fbx ]
       </Typography>
       <Typography variant="body2" className="text-xs text-gray-500 mx-4">
-        zip[ .zip]
+        zip[ .zip ]
       </Typography>
     </Horizontal>
     <Vertical className="gap-2 w-full overflow-scroll">
