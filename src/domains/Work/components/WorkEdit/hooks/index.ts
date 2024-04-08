@@ -140,7 +140,6 @@ export const useWorkEdit = (
   };
 
   const handleSetTag = (tag: Tag): void => {
-    console.log(tag);
     if (watch('tags').some((t) => t.id === tag.id)) {
       setValue(
         'tags',

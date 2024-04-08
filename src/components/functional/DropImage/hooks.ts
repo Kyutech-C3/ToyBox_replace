@@ -23,9 +23,7 @@ export const useDragImage = (
   };
 
   const handleDrop = (e: DragEvent<HTMLDivElement>): void => {
-    console.log('in');
     e.preventDefault();
-    console.log('in2');
     setIsDrag(false);
     if (!e.dataTransfer.files.length) {
       return;

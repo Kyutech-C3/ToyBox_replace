@@ -61,7 +61,6 @@ export const SubmitButton: FC<Props> = ({
     setUploadState('UPLOADING');
     try {
       const res = await handlePublish();
-      console.log(res);
       setUploadWorkId(res.id);
       setUploadState('UPLOADED');
     } catch (e) {
