@@ -51,7 +51,7 @@ export const AssetUpload: FC<Props> = ({ handleUploadAssets, assets }) => (
       onDrop={(e) => {
         void handleUploadAssets(e);
       }}
-      className="rounded-md relative w-full h-24 border-2 border-orange-pop"
+      className="rounded-md relative w-full h-64 border-2 border-orange-pop"
     >
       <Center className="h-full -z-20 absolute flex flex-col">
         <div

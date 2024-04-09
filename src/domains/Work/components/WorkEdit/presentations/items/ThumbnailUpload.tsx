@@ -39,7 +39,7 @@ export const ThumbnailUpload: FC<Props> = ({
           void handleUploadThumbnail(e[0]);
         }
       }}
-      className="rounded-md relative w-full h-24 border-2 border-orange-pop"
+      className="rounded-md relative h-64 w-full border-2 border-orange-pop"
     >
       <Center className="h-full -z-20 absolute flex flex-col">
         <div

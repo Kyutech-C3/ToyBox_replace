@@ -23,7 +23,7 @@ export const SearchWorkPalettePresentation: FC<Props> = ({
   handleChangeTagId,
 }: Props) => (
   <Horizontal className="shadow-2xl shadow-orange-white h-[500px] w-[300px]">
-    <Vertical className="bg-orange-pop p-1 items-center rounded-md flex-grow gap-1">
+    <Vertical className="bg-orange-pop p-1 items-center rounded-md gap-1">
       <Search className="aspect-square h-full ml-1" color="white" />
       <Input
         className="flex-grow border-orange-pop text-xs h-8"

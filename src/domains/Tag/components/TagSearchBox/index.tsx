@@ -11,7 +11,7 @@ type Props = {
   handleTagClick: (tag: Tag) => void;
 };
 export const TagSearchBox: FC<Props> = ({ handleTagClick }) => (
-  <Horizontal className="border-orange-pop border-2 rounded-md overflow-scroll">
+  <Horizontal className="border-orange-pop border-2 rounded-md overflow-scroll h-full">
     <TagSearchInput />
     <div className="px-4 pb-4">
       <TagSearchResult handleClickTag={handleTagClick} />
