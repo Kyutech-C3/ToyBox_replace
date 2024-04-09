@@ -15,5 +15,9 @@ export default meta;
 type Story = StoryObj<typeof WorkDetail>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    params: {
+      workId: '1',
+    },
+  },
 };
