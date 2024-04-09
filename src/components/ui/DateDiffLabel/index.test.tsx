@@ -37,11 +37,6 @@ describe('test ui/DateDiffLabel', () => {
     expect(screen.getByText(/ヶ月前/)).toBeInTheDocument();
   });
 
-  it('should display date in MM/DD format for dates within the same year', () => {
-    render(<DateDiffLabel date={new Date(2023, 2, 10)} now={now} />);
-    expect(screen.getByText('3/10')).toBeInTheDocument();
-  });
-
   it('should display date in YYYY/MM/DD format for dates in a different year', () => {
     render(<DateDiffLabel date={new Date(2022, 11, 25)} now={now} />);
     expect(screen.getByText('2022/12/25')).toBeInTheDocument();

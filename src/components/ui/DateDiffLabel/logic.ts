@@ -17,8 +17,6 @@ export const DateToDiffLabel = (date: Date, now: Date): string => {
     return `${Math.floor(diffInSeconds / WEEK)}${DATE_DIFF_LABEL['week']}`;
   if (diffInSeconds <= MONTH * 3)
     return `${Math.floor(diffInSeconds / MONTH)}${DATE_DIFF_LABEL['month']}`;
-  if (date.getFullYear() === now.getFullYear())
-    return `${date.getMonth() + 1}/${date.getDate()}`;
 
   return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
 };
