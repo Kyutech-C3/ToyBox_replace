@@ -1,7 +1,6 @@
-import type {FC} from 'react';
+import type { FC } from 'react';
 
 import { DateToDiffLabel } from './logic';
-
 
 type Prop = {
   date: Date;
@@ -9,12 +8,12 @@ type Prop = {
   className?: string;
 };
 
-export const DateDiffLabel: FC<Prop> = ({ 
-  date, 
-  now = new Date(), 
+export const DateDiffLabel: FC<Prop> = ({
+  date,
+  now = new Date(),
   className,
 }) => (
-    <time  className={className} dateTime={date.toISOString()}>
-      {DateToDiffLabel(date, now)}
-    </time>
-  );
+  <time className={className} dateTime={date.toISOString()}>
+    {DateToDiffLabel(date, now)}
+  </time>
+);

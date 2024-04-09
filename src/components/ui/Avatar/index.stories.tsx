@@ -28,5 +28,5 @@ export const Fallback: Story = {
     <Avatar>
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
-  )
-}
+  ),
+};

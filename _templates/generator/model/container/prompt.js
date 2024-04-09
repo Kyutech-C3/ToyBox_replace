@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const targetDirectory = './src/components/model';
+const targetDirectory = './src/domains';
 function getDomains(basePath) {
   return fs.readdirSync(basePath).filter((file) => {
     const filePath = path.join(basePath, file);
@@ -54,7 +54,7 @@ module.exports = {
       ])
       .then(({ name, domains, have_props, have_hooks, gen_files }) => {
         const contentToAdd = `\nexport * from './${name}';\n`;
-        const path = `./src/components/model/${domains}/components/index.ts`;
+        const path = `./src/domains/${domains}/components/index.ts`;
         fs.appendFile(path, contentToAdd, 'utf8', (err) => {
           if (err) {
             console.error('ファイルの書き込みに失敗しました:', err);

@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef }  from 'react';
+import { forwardRef } from 'react';
 
 import * as AvatarPrimitive from '@radix-ui/react-avatar';
 

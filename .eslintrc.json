@@ -12,6 +12,7 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
+  "ignorePatterns": ["src/mocks/**/*"],
   "plugins": [
     "react",
     "import",
@@ -35,6 +36,7 @@
     // 未使用のインポートを禁止
     "unused-imports/no-unused-imports": "error",
 
+    "@typescript-eslint/no-misused-promises": "off",
     // JSXのブール属性の値を明示的に指定する
     "react/jsx-boolean-value": "error",
 
@@ -92,10 +94,7 @@
           // pageコンポーネントにおいて、他のpageコンポーネントからのimportを禁止する
           {
             "target": "./src/components/page/**/index.tsx",
-            "from": [
-              "./src/components/page/**/index.tsx",
-              "./node_modules/@radix-ui/"
-            ]
+            "from": ["./src/components/page/**/index.tsx"]
           },
           // appディレクトリ配下においてmodel,uiのimportを禁止する
           {

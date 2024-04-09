@@ -15,67 +15,90 @@ module.exports = {
         '2xl': '1400px',
       },
     },
+    screens: {
+      mobile: '375px',
+      tablet: '640px',
+      laptop: '1024px',
+      desktop: '1280px',
+    },
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+          },
+        },
+      },
       aspectRatio: {
-        thumbnail: '21/16',
+        'thumbnail': '21/16',
+        'thumbnail-half': '21/32',
+        'half': '1/2',
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
+        'border': 'hsl(var(--border))',
+        'input': 'hsl(var(--input))',
+        'ring': 'hsl(var(--ring))',
+        'background': 'hsl(var(--background))',
+        'foreground': 'hsl(var(--foreground))',
+        'primary': {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
         },
-        secondary: {
+        'secondary': {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
         },
-        destructive: {
+        'destructive': {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
-        muted: {
+        'muted': {
           DEFAULT: 'hsl(var(--muted))',
           foreground: 'hsl(var(--muted-foreground))',
         },
-        accent: {
+        'accent': {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
-        popover: {
+        'popover': {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
         },
-        card: {
+        'card': {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
-        green: {
+        'green': {
           white: '#e6febf',
           sub: '#cdfe80',
           light: '#b4fd40',
           pop: '#9bfc00',
         },
-        blue: {
+        'blue': {
           white: '#bff0fe',
           sub: '#80e2fb',
           light: '#40d3fb',
           pop: '#00c4fa',
         },
-        pink: {
+        'pink': {
           white: '#fec1d7',
           sub: '#fd82af',
           light: '#fb4487',
           pop: '#fa055f',
         },
-        orange: {
+        'orange': {
           white: '#ffe9bf',
           sub: '#ffd280',
           light: '#ffbc40',
           pop: '#ffa500',
+        },
+        'pale-red': {
+          DEFAULT: '#E0A99A',
         },
       },
       borderRadius: {
@@ -121,5 +144,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
 };

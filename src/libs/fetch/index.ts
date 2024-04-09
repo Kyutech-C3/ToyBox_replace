@@ -1,1 +1,6 @@
-export * from '@tanstack/react-query';
+import useSWR from 'swr';
+import * as swr from 'swr';
+
+export default useSWR;
+
+export { swr };

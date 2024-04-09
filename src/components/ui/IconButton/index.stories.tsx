@@ -16,6 +16,6 @@ type Story = StoryObj<typeof IconButton>;
 
 export const Default: Story = {
   args: {
-    children: <span className='text-xl'>👍</span>
+    children: <span className="text-xl">👍</span>,
   },
 };
