@@ -1,3 +1,6 @@
 [submodule "schema"]
 	path = schema
 	url = git@github.com:Kyutech-C3/Toybox_schema.git
+[submodule "protoc-plugin"]
+	path = protoc-plugin
+	url = git@github.com:Kyutech-C3/protoc-plugin.git
