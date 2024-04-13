@@ -10,8 +10,8 @@ const ApiV1AuthDiscordCallbackGetHandler = http.get('/api/v1/auth/discord/callba
 const ApiV1AuthTokenPostHandler = http.post('/api/v1/auth/token',() => {
   return HttpResponse.json({
     expired_at:'',
-    refresh_token:'~kisrg}{a|gfh',
-    access_token:'~kisrg}{a|gfh',
+    refresh_token:'mzxm}e~}}ua',
+    access_token:'mzxm}e~}}ua',
   })
 })
 const ApiV1AuthDiscordGetHandler = http.get('/api/v1/auth/discord',() => {
@@ -21,13 +21,13 @@ const ApiV1AuthDiscordGetHandler = http.get('/api/v1/auth/discord',() => {
 })
 const ApiV1AuthSignUpPostHandler = http.post('/api/v1/auth/sign_up',() => {
   return HttpResponse.json({
-    id:'74517e6a-4ee0-43aa-b82c-f6e8ccf73c1b',
-    name:'Mr. Augustus Kihn V',
-    display_name:'Mr. Augustus Kihn V',
-    avatar_url:'http://www.fyu.net/oam-h',
-    profile:'id sed adipisci accusamus et ut illo impedit eaque doloremque a deleniti illum officiis commodi ipsum magnam dolor possimus voluptas perferendis ab voluptas dolorem aut ut magni repellat magni est accusantium quia dignissimos sit ea mollitia inventore vitae velit et.',
-    twitter_id:'10798924-01ba-4baf-b217-ae4bf047a1a9',
-    github_id:'384a44a4-3955-4fa1-aedd-15be60032519',
+    id:'f5221cab-c35c-4fa0-9b7b-9e4bd1f0d4b8',
+    name:'Xander Hessel Jr.',
+    display_name:'Xander Hessel Jr.',
+    avatar_url:'https://placehold.jp/150x150.png',
+    profile:'odio atque quaerat aut fugit odit suscipit et sint nulla optio ab dolores saepe rem aliquid aut id veniam ut temporibus corporis vero sint ea in quidem harum qui excepturi quae aut itaque animi aliquam amet explicabo voluptate deleniti sapiente.',
+    twitter_id:'47e7f71c-3f1b-4306-93c3-c7d4265e1d42',
+    github_id:'01d65eb7-3089-40a2-8951-832bbc49bbf8',
     created_at:'2021-09-01T00:00:00Z',
     updated_at:'2021-09-01T00:00:00Z',
   })

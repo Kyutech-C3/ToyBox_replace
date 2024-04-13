@@ -6,42 +6,47 @@ const ApiV1TagsGetHandler = http.get('/api/v1/tags',() => {
   return HttpResponse.json({
     tags:[
     {
-    id:'c143d2a2-1522-4936-b511-c84f892d6222',
-    name:'Mr. Augustus Kihn V',
-    color:'#AD0A61',
+    id:'aae272e1-737a-467e-8eb0-981d21fedbeb',
+    name:'Xander Hessel Jr.',
+    color:'#343B04',
     },
     {
-    id:'8eb89ccc-db27-47d3-b4a6-dafaec94b96d',
-    name:'Mr. Augustus Kihn V',
-    color:'#AD0A61',
+    id:'a689468e-c291-4e2c-935c-6ce43b14fa32',
+    name:'Xander Hessel Jr.',
+    color:'#343B04',
     },
     {
-    id:'70cc0f48-fda7-49b2-889d-599cb8f1c4ed',
-    name:'Mr. Augustus Kihn V',
-    color:'#AD0A61',
+    id:'9fcca1f4-f37a-493a-94d2-1ab81a0ba3ab',
+    name:'Xander Hessel Jr.',
+    color:'#343B04',
+    },
+    {
+    id:'b7aeaeba-42ac-4647-a8ea-23b9b4ac4ce7',
+    name:'Xander Hessel Jr.',
+    color:'#343B04',
     },
     ],
   })
 })
 const ApiV1TagsPostHandler = http.post('/api/v1/tags',() => {
   return HttpResponse.json({
-    id:'f30b55d9-7bcd-494a-baf6-79aa40207924',
-    name:'Mr. Augustus Kihn V',
-    color:'#AD0A61',
+    id:'15dcf5ee-480d-4973-bca9-bbf6797ca51c',
+    name:'Xander Hessel Jr.',
+    color:'#343B04',
   })
 })
 const ApiV1TagsTagIdGetHandler = http.get('/api/v1/tags/{tag_id}',() => {
   return HttpResponse.json({
-    id:'0063b8fa-d798-47c2-931e-aebcf455009b',
-    name:'Mr. Augustus Kihn V',
-    color:'#AD0A61',
+    id:'14006ffc-4e04-4519-a0fa-d1ed546f9b4e',
+    name:'Xander Hessel Jr.',
+    color:'#343B04',
   })
 })
 const ApiV1TagsTagIdPutHandler = http.put('/api/v1/tags/{tag_id}',() => {
   return HttpResponse.json({
-    id:'4d700716-f3ae-44f5-a326-52b1d85fb5d5',
-    name:'Mr. Augustus Kihn V',
-    color:'#AD0A61',
+    id:'267706cd-b5f1-45e4-a050-18e4a125cd93',
+    name:'Xander Hessel Jr.',
+    color:'#343B04',
   })
 })
 const ApiV1TagsTagIdDeleteHandler = http.delete('/api/v1/tags/{tag_id}',() => {

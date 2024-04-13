@@ -4,7 +4,7 @@
 import { http, HttpResponse } from 'msw'
 const ApiV1AssetsPostHandler = http.post('/api/v1/assets',() => {
   return HttpResponse.json({
-    id:'081b6849-880d-4d41-a616-703771ba0153',
+    id:'fc4754ba-7998-440c-bf25-cf9edac81cb8',
   })
 })
 const ApiV1AssetsIdDeleteHandler = http.delete('/api/v1/assets/{id}',() => {

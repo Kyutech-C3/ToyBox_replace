@@ -183,6 +183,7 @@ export type CreateWorkRequest = {
 }
 export type GetWorksResponse = {
   works: Work[];
+  worksTotalCount: number;
 }
 export type GetWorksRequest = {
   page: number;

@@ -7,4 +7,4 @@ import { handlers } from '../msw/handlers';
 const app = express();
 app.use(cors());
 app.use(createMiddleware(...handlers));
-app.listen(8080);
+app.listen(8000);
