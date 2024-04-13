@@ -13,7 +13,7 @@ export const convertWork = (work: modelWork): Work => ({
   title: work.title,
   creator: userConverter(work.user),
   isPublic: work.visibility === 'public',
-  tags: work.tags.map((tag) => tagConverter(tag)),
+  tags: work.tags?.map((tag) => tagConverter(tag)),
   thumbnailUrl: work.thumbnail.url,
   createdAt: work.created_at,
 });
@@ -38,7 +38,7 @@ export const convertCreateWork = (work: DefaultWork): PostWork => ({
   title: work.title,
   description: work.description,
   visibility: work.isPublic ? 'public' : 'private',
-  tags_id: work.tags.map((tag) => tag.id),
+  tags_id: work.tags?.map((tag) => tag.id),
   thumbnail_asset_id: work.thumbnail.id,
   urls: urlsConverterToBaseURLInfo(work.urls),
   assets_id: work.assets.map((asset) => asset.id),

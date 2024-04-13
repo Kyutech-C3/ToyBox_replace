@@ -4,36 +4,25 @@ import type { FC } from 'react';
 
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { worksRepository } from '../../../repository';
-
 import { WorkCardsPresentation } from './main';
 
-const WorkCardsFetchContainer: FC<{
-  currentPage: number;
-  handleNextPage: (page: number) => void;
-}> = async ({ currentPage, handleNextPage }) => {
-  const { works, totalCount } = await worksRepository.getWorks({
-    query: {
-      page: currentPage,
-    },
-  });
-  return (
-    <WorkCardsPresentation
-      works={works}
-      totalPage={Math.round(totalCount / 30)}
-      currentPage={currentPage}
-      handleNextPage={handleNextPage}
-    />
-  );
-};
+import type { Works } from '@/domains/Work/types';
 
-export const WorkCardsContainer: FC = () => {
+type Props = {
+  currentPage: number;
+  totalPage: number;
+  works: Works;
+};
+export const WorkCardsContainer: FC<Props> = ({ works, totalPage }) => {
   const params = useSearchParams();
   const currentPage = parseInt(params.get('page') || '1');
   const router = useRouter();
+
   return (
-    <WorkCardsFetchContainer
+    <WorkCardsPresentation
       currentPage={currentPage}
+      works={works}
+      totalPage={totalPage}
       handleNextPage={(page: number) => router.push(`/?page=${page}`)}
     />
   );

@@ -28,6 +28,8 @@ export const Pagination: FC<Props> = ({
   currentPage,
   displayRange = 1,
 }: Props) => {
+  console.log('currentPage', currentPage);
+  console.log('totalPage', totalPage);
   // Format current page to be between 1 and totalPage ( 1 <= formatCurrentPage <= totalPage )
   const formatCurrentPage = restrictRange(currentPage, 1, totalPage);
 
