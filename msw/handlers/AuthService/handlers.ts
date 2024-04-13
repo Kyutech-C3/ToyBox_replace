@@ -10,8 +10,8 @@ const ApiV1AuthDiscordCallbackGetHandler = http.get('/api/v1/auth/discord/callba
 const ApiV1AuthTokenPostHandler = http.post('/api/v1/auth/token',() => {
   return HttpResponse.json({
     expired_at:'',
-    refresh_token:'y{l{hijtqjtzgvxp',
-    access_token:'y{l{hijtqjtzgvxp',
+    refresh_token:'~kisrg}{a|gfh',
+    access_token:'~kisrg}{a|gfh',
   })
 })
 const ApiV1AuthDiscordGetHandler = http.get('/api/v1/auth/discord',() => {
@@ -21,13 +21,13 @@ const ApiV1AuthDiscordGetHandler = http.get('/api/v1/auth/discord',() => {
 })
 const ApiV1AuthSignUpPostHandler = http.post('/api/v1/auth/sign_up',() => {
   return HttpResponse.json({
-    id:'01bad699-054d-45ef-aa8f-86ba01ef5fb4',
-    name:'Asa Gulgowski',
-    display_name:'Asa Gulgowski',
-    avatar_url:'https://www.wed.biz/xrw-pnx',
-    profile:'aut sunt dignissimos amet dicta voluptates cupiditate aut numquam dolorem minima numquam culpa iure voluptatibus consequuntur ipsa animi quo dolores eum voluptatum aut repellat voluptas et fugiat adipisci ut ipsam dolores vero molestiae doloribus eos est tempore odio illum est.',
-    twitter_id:'103c831d-0c5b-4576-9c0a-c86b334ab11e',
-    github_id:'17ff1139-628e-4b85-9c4c-1de9e8c4560f',
+    id:'74517e6a-4ee0-43aa-b82c-f6e8ccf73c1b',
+    name:'Mr. Augustus Kihn V',
+    display_name:'Mr. Augustus Kihn V',
+    avatar_url:'http://www.fyu.net/oam-h',
+    profile:'id sed adipisci accusamus et ut illo impedit eaque doloremque a deleniti illum officiis commodi ipsum magnam dolor possimus voluptas perferendis ab voluptas dolorem aut ut magni repellat magni est accusantium quia dignissimos sit ea mollitia inventore vitae velit et.',
+    twitter_id:'10798924-01ba-4baf-b217-ae4bf047a1a9',
+    github_id:'384a44a4-3955-4fa1-aedd-15be60032519',
     created_at:'2021-09-01T00:00:00Z',
     updated_at:'2021-09-01T00:00:00Z',
   })

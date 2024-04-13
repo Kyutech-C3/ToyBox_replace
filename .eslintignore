@@ -19,3 +19,5 @@ src/api/**/*
 msw/
 
 public/mockServiceWorker.js
+
+protoc-plugin/

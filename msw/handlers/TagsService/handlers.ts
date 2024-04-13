@@ -6,37 +6,42 @@ const ApiV1TagsGetHandler = http.get('/api/v1/tags',() => {
   return HttpResponse.json({
     tags:[
     {
-    id:'35701d5c-a7ce-4f16-8eb6-397840646007',
-    name:'Asa Gulgowski',
-    color:'#C44549',
+    id:'c143d2a2-1522-4936-b511-c84f892d6222',
+    name:'Mr. Augustus Kihn V',
+    color:'#AD0A61',
     },
     {
-    id:'95c20d45-b46a-427e-a782-15ada4e9056b',
-    name:'Asa Gulgowski',
-    color:'#C44549',
+    id:'8eb89ccc-db27-47d3-b4a6-dafaec94b96d',
+    name:'Mr. Augustus Kihn V',
+    color:'#AD0A61',
+    },
+    {
+    id:'70cc0f48-fda7-49b2-889d-599cb8f1c4ed',
+    name:'Mr. Augustus Kihn V',
+    color:'#AD0A61',
     },
     ],
   })
 })
 const ApiV1TagsPostHandler = http.post('/api/v1/tags',() => {
   return HttpResponse.json({
-    id:'efae644f-51cf-4b2c-965d-a3f7243a12b5',
-    name:'Asa Gulgowski',
-    color:'#C44549',
+    id:'f30b55d9-7bcd-494a-baf6-79aa40207924',
+    name:'Mr. Augustus Kihn V',
+    color:'#AD0A61',
   })
 })
 const ApiV1TagsTagIdGetHandler = http.get('/api/v1/tags/{tag_id}',() => {
   return HttpResponse.json({
-    id:'a8f94ea5-c492-44b8-8370-1acfacad805a',
-    name:'Asa Gulgowski',
-    color:'#C44549',
+    id:'0063b8fa-d798-47c2-931e-aebcf455009b',
+    name:'Mr. Augustus Kihn V',
+    color:'#AD0A61',
   })
 })
 const ApiV1TagsTagIdPutHandler = http.put('/api/v1/tags/{tag_id}',() => {
   return HttpResponse.json({
-    id:'34b9c70c-0c92-4934-899a-617617071798',
-    name:'Asa Gulgowski',
-    color:'#C44549',
+    id:'4d700716-f3ae-44f5-a326-52b1d85fb5d5',
+    name:'Mr. Augustus Kihn V',
+    color:'#AD0A61',
   })
 })
 const ApiV1TagsTagIdDeleteHandler = http.delete('/api/v1/tags/{tag_id}',() => {
