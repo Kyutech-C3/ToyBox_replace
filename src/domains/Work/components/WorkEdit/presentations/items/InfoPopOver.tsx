@@ -13,7 +13,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const InfoToolTip: FC<Props> = ({ children }) => (
+export const InfoPopOver: FC<Props> = ({ children }) => (
   <TooltipProvider>
     <Tooltip>
       <TooltipTrigger>

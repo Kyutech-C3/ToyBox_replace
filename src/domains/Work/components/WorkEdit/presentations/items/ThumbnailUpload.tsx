@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 
-import { Horizontal } from '@/components/Layout/Horizontal';
+import { InfoPopOver } from './InfoPopOver';
+
 import { Vertical } from '@/components/Layout/Vertical';
 import { DropImage } from '@/components/functional/DropImage';
 import { Center } from '@/components/ui/Center';
@@ -24,15 +25,8 @@ export const ThumbnailUpload: FC<Props> = ({
       <Typography variant="body2" className="text-red-500">
         必須
       </Typography>
+      <InfoPopOver>{`対応形式:\n    画像 [ .png .jpg .jpeg .bmp .gif ]`}</InfoPopOver>
     </Vertical>
-    <Horizontal className="gap-0 items-start -mt-4">
-      <Typography variant="body2" className="text-gray-500">
-        対応形式:
-      </Typography>
-      <Typography variant="body2" className="text-xs text-gray-500 mx-4">
-        画像 [ .png .jpg .jpeg .bmp .gif ]
-      </Typography>
-    </Horizontal>
     <DropImage
       onDrop={(e) => {
         if (e[0]) {
