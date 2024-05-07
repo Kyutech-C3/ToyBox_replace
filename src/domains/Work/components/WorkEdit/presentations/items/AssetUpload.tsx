@@ -11,6 +11,7 @@ import { DropImage } from '@/components/functional/DropImage';
 import { Center } from '@/components/ui/Center';
 import { Input } from '@/components/ui/Input';
 import { Typography } from '@/components/ui/Typography';
+import { ASSET_EXTENSION } from '@/constants/supportExtension';
 import { cn } from '@/libs/utils';
 
 type Props = {
@@ -24,30 +25,7 @@ export const AssetUpload: FC<Props> = ({ handleUploadAssets, assets }) => (
       <Typography className="text-red-500" variant="body2">
         必須
       </Typography>
-      <SupportExtPopOver
-        supportedExts={[
-          {
-            category: '画像',
-            exts: ['png', 'jpg', 'jpeg', 'bmp', 'gif'],
-          },
-          {
-            category: '動画',
-            exts: ['mp4', 'mov'],
-          },
-          {
-            category: '音源',
-            exts: ['mp3', 'wav', 'm4a'],
-          },
-          {
-            category: 'モデル',
-            exts: ['gltf', 'fbx'],
-          },
-          {
-            category: 'zip',
-            exts: ['zip'],
-          },
-        ]}
-      />
+      <SupportExtPopOver supportedExts={ASSET_EXTENSION} />
     </Vertical>
     <Vertical className="gap-2 w-full overflow-scroll">
       {assets.map((asset) => AssetRender(asset, 'w-24 p-0'))}

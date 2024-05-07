@@ -7,6 +7,7 @@ import { DropImage } from '@/components/functional/DropImage';
 import { Center } from '@/components/ui/Center';
 import { Input } from '@/components/ui/Input';
 import { Typography } from '@/components/ui/Typography';
+import { THUMBNAIL_EXTENSION } from '@/constants/supportExtension';
 import { cn } from '@/libs/utils';
 
 type Props = {
@@ -25,14 +26,7 @@ export const ThumbnailUpload: FC<Props> = ({
       <Typography variant="body2" className="text-red-500">
         必須
       </Typography>
-      <SupportExtPopOver
-        supportedExts={[
-          {
-            category: '画像',
-            exts: ['png', 'jpg', 'jpeg', 'bmp', 'gif'],
-          },
-        ]}
-      />
+      <SupportExtPopOver supportedExts={THUMBNAIL_EXTENSION} />
     </Vertical>
     <DropImage
       onDrop={(e) => {
