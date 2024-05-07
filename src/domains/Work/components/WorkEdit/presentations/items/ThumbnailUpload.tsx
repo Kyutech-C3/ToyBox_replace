@@ -25,10 +25,14 @@ export const ThumbnailUpload: FC<Props> = ({
       <Typography variant="body2" className="text-red-500">
         必須
       </Typography>
-      <SupportExtPopOver>
-        <p>対応形式:</p>
-        <p className="indent-2">画像 [.png .jpg .jpeg .bmp .gif]</p>
-      </SupportExtPopOver>
+      <SupportExtPopOver
+        supportedExts={[
+          {
+            category: '画像',
+            exts: ['png', 'jpg', 'jpeg', 'bmp', 'gif'],
+          },
+        ]}
+      />
     </Vertical>
     <DropImage
       onDrop={(e) => {

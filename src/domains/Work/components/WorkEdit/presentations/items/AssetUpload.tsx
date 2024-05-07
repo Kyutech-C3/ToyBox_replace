@@ -24,14 +24,30 @@ export const AssetUpload: FC<Props> = ({ handleUploadAssets, assets }) => (
       <Typography className="text-red-500" variant="body2">
         必須
       </Typography>
-      <SupportExtPopOver>
-        <p>対応形式: </p>
-        <p className="indent-2">画像[.png .jpg .jpeg .bmp .gif]</p>
-        <p className="indent-2">動画[.mp4 .mov]</p>
-        <p className="indent-2">音源[.mp3 .wav .m4a]</p>
-        <p className="indent-2">モデル[.gltf .fbx]</p>
-        <p className="indent-2">zip[.zip]</p>
-      </SupportExtPopOver>
+      <SupportExtPopOver
+        supportedExts={[
+          {
+            category: '画像',
+            exts: ['png', 'jpg', 'jpeg', 'bmp', 'gif'],
+          },
+          {
+            category: '動画',
+            exts: ['mp4', 'mov'],
+          },
+          {
+            category: '音源',
+            exts: ['mp3', 'wav', 'm4a'],
+          },
+          {
+            category: 'モデル',
+            exts: ['gltf', 'fbx'],
+          },
+          {
+            category: 'zip',
+            exts: ['zip'],
+          },
+        ]}
+      />
     </Vertical>
     <Vertical className="gap-2 w-full overflow-scroll">
       {assets.map((asset) => AssetRender(asset, 'w-24 p-0'))}
