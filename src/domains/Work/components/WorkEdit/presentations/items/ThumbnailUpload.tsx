@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 
-import { InfoPopOver } from './InfoPopOver';
+import { SupportExtPopOver } from './SupportExtPopOver';
 
 import { Vertical } from '@/components/Layout/Vertical';
 import { DropImage } from '@/components/functional/DropImage';
@@ -25,7 +25,10 @@ export const ThumbnailUpload: FC<Props> = ({
       <Typography variant="body2" className="text-red-500">
         必須
       </Typography>
-      <InfoPopOver>{`対応形式:\n    画像 [ .png .jpg .jpeg .bmp .gif ]`}</InfoPopOver>
+      <SupportExtPopOver>
+        <p>対応形式:</p>
+        <p className="indent-2">画像 [.png .jpg .jpeg .bmp .gif]</p>
+      </SupportExtPopOver>
     </Vertical>
     <DropImage
       onDrop={(e) => {
