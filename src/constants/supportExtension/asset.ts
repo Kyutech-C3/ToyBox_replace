@@ -1,4 +1,4 @@
-export const ASSET_EXTENSION = [
+export const ASSET_EXTENSIONS = [
   {
     category: '画像',
     exts: ['png', 'jpg', 'jpeg', 'bmp', 'gif'],
@@ -20,3 +20,6 @@ export const ASSET_EXTENSION = [
     exts: ['zip'],
   },
 ];
+
+export const ASSET_ACCEPT_EXTENSIONS =
+  'image/png, image/jpeg, image/jpg, image/bmp, image/gif, video/mp4, video/mov, audio/mp3, audio/wav, audio/m4a, model/gltf, model/fbx, application/zip';
