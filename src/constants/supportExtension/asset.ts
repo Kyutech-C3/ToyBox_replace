@@ -19,7 +19,7 @@ export const ASSET_EXTENSIONS = [
     category: 'zip',
     exts: ['zip'],
   },
-];
+] as const;
 
 const categoryToPrefixMap: { [key: string]: string } = {
   画像: 'image',
