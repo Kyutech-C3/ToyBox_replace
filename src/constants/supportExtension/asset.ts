@@ -21,5 +21,17 @@ export const ASSET_EXTENSIONS = [
   },
 ];
 
-export const ASSET_ACCEPT_EXTENSIONS =
-  'image/png, image/jpeg, image/jpg, image/bmp, image/gif, video/mp4, video/mov, audio/mp3, audio/wav, audio/m4a, model/gltf, model/fbx, application/zip';
+const categoryToPrefixMap: { [key: string]: string } = {
+  画像: 'image',
+  動画: 'video',
+  音源: 'audio',
+  モデル: 'model',
+  zip: 'application',
+};
+
+export const ASSET_ACCEPT_EXTENSIONS = ASSET_EXTENSIONS.flatMap((category) =>
+  category.exts.map((ext) => {
+    const prefix = categoryToPrefixMap[category.category];
+    return `${prefix}/${ext}`;
+  })
+).join(', ');
