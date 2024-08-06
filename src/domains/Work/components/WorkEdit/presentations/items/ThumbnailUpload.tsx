@@ -39,14 +39,14 @@ export const ThumbnailUpload: FC<Props> = ({
       <Center className="h-full -z-20 absolute flex flex-col">
         <div
           className={cn('bg-pale-red/25 w-full absolute h-0 bottom-0 -z-30', {
-            'h-full': thumbnailUrl != '',
+            'h-full': thumbnailUrl !== '',
           })}
         />
         <Typography variant="body1">
           クリック または ドラッグ&ドロップ
         </Typography>
         <Typography variant="body2" className="text-gray-400">
-          {thumbnailUrl != ''
+          {thumbnailUrl !== ''
             ? 'サムネイルをアップロード済み'
             : 'サムネイルをアップロードしてください'}
         </Typography>

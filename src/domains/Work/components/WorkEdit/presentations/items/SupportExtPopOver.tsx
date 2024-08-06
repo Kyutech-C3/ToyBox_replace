@@ -13,7 +13,10 @@ import {
 import { Typography } from '@/components/ui/Typography';
 
 type Props = {
-  supportedExts: { category: string; exts: string[] }[];
+  supportedExts: readonly {
+    category: string;
+    exts: readonly string[];
+  }[];
 };
 
 export const SupportExtPopOver: FC<Props> = ({ supportedExts }) => (
