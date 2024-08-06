@@ -1,11 +1,13 @@
 import type { FC } from 'react';
 
-import { Horizontal } from '@/components/Layout/Horizontal';
+import { SupportExtPopOver } from './SupportExtPopOver';
+
 import { Vertical } from '@/components/Layout/Vertical';
 import { DropImage } from '@/components/functional/DropImage';
 import { Center } from '@/components/ui/Center';
 import { Input } from '@/components/ui/Input';
 import { Typography } from '@/components/ui/Typography';
+import { THUMBNAIL_EXTENSIONS } from '@/constants/supportExtension';
 import { cn } from '@/libs/utils';
 
 type Props = {
@@ -24,15 +26,8 @@ export const ThumbnailUpload: FC<Props> = ({
       <Typography variant="body2" className="text-red-500">
         必須
       </Typography>
+      <SupportExtPopOver supportedExts={THUMBNAIL_EXTENSIONS} />
     </Vertical>
-    <Horizontal className="gap-0 items-start -mt-4">
-      <Typography variant="body2" className="text-gray-500">
-        対応形式:
-      </Typography>
-      <Typography variant="body2" className="text-xs text-gray-500 mx-4">
-        画像 [ .png .jpg .jpeg .bmp .gif ]
-      </Typography>
-    </Horizontal>
     <DropImage
       onDrop={(e) => {
         if (e[0]) {
@@ -44,14 +39,14 @@ export const ThumbnailUpload: FC<Props> = ({
       <Center className="h-full -z-20 absolute flex flex-col">
         <div
           className={cn('bg-pale-red/25 w-full absolute h-0 bottom-0 -z-30', {
-            'h-full': thumbnailUrl != '',
+            'h-full': thumbnailUrl !== '',
           })}
         />
         <Typography variant="body1">
           クリック または ドラッグ&ドロップ
         </Typography>
         <Typography variant="body2" className="text-gray-400">
-          {thumbnailUrl != ''
+          {thumbnailUrl !== ''
             ? 'サムネイルをアップロード済み'
             : 'サムネイルをアップロードしてください'}
         </Typography>

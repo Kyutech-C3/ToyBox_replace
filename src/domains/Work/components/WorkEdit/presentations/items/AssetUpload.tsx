@@ -2,14 +2,19 @@ import type { FC } from 'react';
 
 import { AssetRender } from '../../../AssetList/assetRender';
 
+import { SupportExtPopOver } from './SupportExtPopOver';
+
 import type { Asset } from '@/domains/Work/types';
 
-import { Horizontal } from '@/components/Layout/Horizontal';
 import { Vertical } from '@/components/Layout/Vertical';
 import { DropImage } from '@/components/functional/DropImage';
 import { Center } from '@/components/ui/Center';
 import { Input } from '@/components/ui/Input';
 import { Typography } from '@/components/ui/Typography';
+import {
+  ASSET_ACCEPT_EXTENSIONS,
+  ASSET_EXTENSIONS,
+} from '@/constants/supportExtension';
 import { cn } from '@/libs/utils';
 
 type Props = {
@@ -23,27 +28,8 @@ export const AssetUpload: FC<Props> = ({ handleUploadAssets, assets }) => (
       <Typography className="text-red-500" variant="body2">
         必須
       </Typography>
+      <SupportExtPopOver supportedExts={ASSET_EXTENSIONS} />
     </Vertical>
-    <Horizontal className="gap-0 items-start -mt-4">
-      <Typography variant="body2" className="text-gray-500">
-        対応形式:
-      </Typography>
-      <Typography variant="body2" className="text-xs text-gray-500 mx-4">
-        画像 [ .png .jpg .jpeg .bmp .gif ]
-      </Typography>
-      <Typography variant="body2" className="text-xs text-gray-500 mx-4">
-        動画 [ .mp4 .mov ]
-      </Typography>
-      <Typography variant="body2" className="text-xs text-gray-500 mx-4">
-        音源 [ .mp3 .wav .m4a ]
-      </Typography>
-      <Typography variant="body2" className="text-xs text-gray-500 mx-4">
-        モデル [ .gltf .fbx ]
-      </Typography>
-      <Typography variant="body2" className="text-xs text-gray-500 mx-4">
-        zip[ .zip ]
-      </Typography>
-    </Horizontal>
     <Vertical className="gap-2 w-full overflow-scroll">
       {assets.map((asset) => AssetRender(asset, 'w-24 p-0'))}
     </Vertical>
@@ -77,7 +63,7 @@ export const AssetUpload: FC<Props> = ({ handleUploadAssets, assets }) => (
           void handleUploadAssets(e.target.files);
         }}
         multiple
-        accept="image/png, image/jpeg, image/jpg, image/bmp, image/gif, video/mp4, video/mov, audio/mp3, audio/wav, audio/m4a, model/gltf, model/fbx, application/zip"
+        accept={ASSET_ACCEPT_EXTENSIONS}
         type="file"
       />
     </DropImage>
